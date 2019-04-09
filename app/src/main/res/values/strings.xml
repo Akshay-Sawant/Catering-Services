@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">Catering App</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="mobile_no">Mobile No</string>
+    <string name="register">Register</string>
+    <string name="about">About Us</string>
+    <string name="contact_us">Contact us</string>
+    <string name="gallery">Gallery</string>
+    <string name="navigation_drawer_open">Open Drawer</string>
+    <string name="navigation_drawer_close">Close Drawer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="contact_no">+91 8828088787</string>
+    <string name="whatsapp">Whatsapp</string>
+    <string name="whatsapp_no">+91 7977486385</string>
+    <string name="facebook">Facebook</string>
+    <string name="follow_us_on_fb">Follow us on our Facebook Page</string>
+    <string name="location">Location</string>
+    <string name="locate_us">Locate Us</string>
+    <string name="gallery_text1">1. We believe in being all around catering service provide home made food, just like "Ghar Jaisa Khaana" with affortable price.</string>
+    <string name="gallery_text2">2. This service provide food for parties, public or private get-together, wedding, and so on.</string>
+    <string name="gallery_text3">3. A catering service providing quality product, imely delivery, special customer attention and provide facilities.</string>
+    <string name="gallery_text4">4. We believe in providing tiffins in mumbai that are healthy, homely and hygienic.</string>
+    <string name="events">Events</string>
+    <string name="tiffin">Tiffin</string>
+    <string name="home">Home</string>
+    <string name="menu">Menu</string>
+    <string name="username">Username</string>
+    <string name="login">Login</string>
+    <string name="select">Select</string>
+    <string name="users">Users</string>
+    <string name="reports">Reports</string>
+
+    <string-array name="lables_array">
+        <item>User</item>
+        <item>Admin</item>
+    </string-array>
+
+    //Temporary Data
+    <string name="text_accounts">Users</string>
+    <string name="hint_name">User Name</string>
+    <string name="hint_email">Email Address</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="text_login">Login</string>
+    <string name="text_register">Register</string>
+    <string name="error_message_name">Enter Full Name</string>
+    <string name="error_message_email">Enter Valid Email Address</string>
+    <string name="error_message_age">Enter Your Age</string>
+    <string name="error_message_password">Enter Password</string>
+    <string name="success_message">Your Registration Successful</string>
+    <string name="text_not_member">No account yet? Create one</string>
+    <string name="text_already_member">Already a member? Login</string>
+    <string name="error_email_exists">Email Address Already Exists</string>
+    <string name="error_password_match">Password Does Not Matches</string>
+    <string name="error_valid_email_password">Wrong Email Address or Password</string>
+    <string name="action_settings">Settings</string>
+    <string name="text_hello">Welcome,</string>
+    <string name="text_title">Login and Registration Demo App</string>
+</resources>
