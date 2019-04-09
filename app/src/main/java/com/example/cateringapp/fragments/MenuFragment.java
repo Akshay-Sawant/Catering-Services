@@ -25,9 +25,9 @@ public class MenuFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
-        Objects.requireNonNull(getActivity()).setTitle(R.string.gallery);
+        Objects.requireNonNull(getActivity()).setTitle(R.string.menu);
 
-        tabLayout = view.findViewById(R.id.tab_layout);
+        /*tabLayout = view.findViewById(R.id.tab_layout);
         viewPager = view.findViewById(R.id.view_pager);
 
         tabLayout.addTab(tabLayout.newTab().setText(R.string.events));
@@ -54,7 +54,7 @@ public class MenuFragment extends Fragment {
             public void onTabReselected(TabLayout.Tab tab) {
 
             }
-        });
+        });*/
 
         return view;
     }

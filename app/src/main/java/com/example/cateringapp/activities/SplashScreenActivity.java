@@ -22,7 +22,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 //                Intent intent = new Intent(SplashScreenActivity.this, HomeScreenActivity.class);
 
                 //Anonymous Class Declaration
-                startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));
+                startActivity(new Intent(SplashScreenActivity.this, WelcomeActivity.class));
                 finish();
             }
         }, SPLASH_SCREEN_TIME_OUT);

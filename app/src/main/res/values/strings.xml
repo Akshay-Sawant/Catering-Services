@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Catering App</string>
+    <string name="app_name">Catering Services</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="password">Password</string>
@@ -7,7 +7,7 @@
     <string name="mobile_no">Mobile No</string>
     <string name="register">Register</string>
     <string name="about">About Us</string>
-    <string name="contact_us">Contact us</string>
+    <string name="contact_us">Contact Us</string>
     <string name="gallery">Gallery</string>
     <string name="navigation_drawer_open">Open Drawer</string>
     <string name="navigation_drawer_close">Close Drawer</string>
@@ -61,4 +61,16 @@
     <string name="action_settings">Settings</string>
     <string name="text_hello">Welcome,</string>
     <string name="text_title">Login and Registration Demo App</string>
+
+    //Intro Screen texts
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+    <string name="start">GOT IT</string>
+    <string name="biryani_dish">Biryani</string>
+    <string name="tandoori_dish">Tandoori</string>
+    <string name="chocolates_dish">Chocolates</string>
+    <string name="variety_dish">Variety Dishes</string>
+    <string name="ice_cream_dish">Ice Cream</string>
+    <string name="dessert_dish">Dessert</string>
+    <string name="communicate">Communicate</string>
 </resources>

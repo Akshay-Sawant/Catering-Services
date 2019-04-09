@@ -2,6 +2,7 @@ package com.example.cateringapp.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.drm.DrmStore;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.cateringapp.R;
@@ -41,13 +43,13 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
         usernameText.setText(emailFromIntent);*/
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new MenuFragment()).commit();
-            navigationView.setCheckedItem(R.id.menu);
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+            navigationView.setCheckedItem(R.id.home);
         }
     }
 
     public void bindingViewFunc() {
-        //-usernameText = findViewById(R.id.user_name_text);
+        //usernameText = findViewById(R.id.user_name_text);
         drawerLayout = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -59,7 +61,15 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.blue));
         actionBarDrawerToggle.syncState();
+
+        emailFloatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                emailFunc();
+            }
+        });
     }
 
     @Override
@@ -80,12 +90,7 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
             case R.id.about_us:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, new AboutUsFragment()).commit();
                 break;
-            case R.id.email_fab:
-//                Toast.makeText(this, "Fab Clicked", Toast.LENGTH_SHORT).show();-
-                emailFunc();
-                break;
         }
-
         drawerLayout.closeDrawer(GravityCompat.START);
 
         return true;
@@ -102,10 +107,12 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
 
     @SuppressLint("IntentReset")
     public void emailFunc() {
-        Intent intent = new Intent("android.intent.action.SEND");
-        intent.setData(Uri.parse(":mailto")); // only email apps should handle this
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setData(Uri.parse("mailto:"));
+        String[] to = {"shobhachaudhary421@gmail.com"};
+        intent.putExtra(Intent.EXTRA_EMAIL, to);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Catering Service Feedback");
         intent.setType("message/rfc822");
-        intent.putExtra("android.intent.extra.EMAIL", new String[]{"shobhachaudhary421@gmail.com"});
-        startActivity(Intent.createChooser(intent, "Mail Us"));
+        startActivity(Intent.createChooser(intent, "Send Feedback: "));
     }
 }
