@@ -33,12 +33,11 @@
             android:layout_marginTop="20dp"
             android:paddingLeft="@dimen/dp_40"
             android:paddingRight="@dimen/dp_40"
-            android:text="Slide 1"
+            android:text="Breakfast slogan"
             android:textAlignment="center"
             android:textColor="@color/grey"
             android:textSize="@dimen/sp_16" />
 
     </LinearLayout>
-
 
 </RelativeLayout>
