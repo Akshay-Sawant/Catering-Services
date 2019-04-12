@@ -42,6 +42,10 @@ public class HomeFragment extends Fragment implements ViewPager.OnPageChangeList
         hashMap.put(getString(R.string.variety_dish), R.drawable.food_dishes);
         hashMap.put(getString(R.string.ice_cream_dish), R.drawable.ice_cream_dishes);
         hashMap.put(getString(R.string.dessert_dish), R.drawable.dessert_dishes);
+        hashMap.put(getString(R.string.chinese_dishes), R.drawable.chinese_dishes);
+        hashMap.put(getString(R.string.juices), R.drawable.juice_dishes);
+        hashMap.put(getString(R.string.indian_sweets_thali), R.drawable.sweets_thali_dishes);
+        hashMap.put(getString(R.string.salad_dishes), R.drawable.salad_dishes);
 
         for (String name : hashMap.keySet()) {
             textSliderView = new TextSliderView(getActivity());

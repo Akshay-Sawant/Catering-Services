@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.cateringapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".activities.WelcomeActivity"></activity>
+        <activity
+            android:name=".activities.DinnerActivity"
+            android:label="@string/dinner"
+            android:theme="@style/AppTheme.ActionBar" />
+        <activity
+            android:name=".activities.LunchActivity"
+            android:label="@string/lunch"
+            android:theme="@style/AppTheme.ActionBar" />
+        <activity
+            android:name=".activities.BreakFastActivity"
+            android:label="@string/breakfast"
+            android:theme="@style/AppTheme.ActionBar" />
+        <activity android:name=".activities.WelcomeActivity" />
         <activity android:name=".activities.AdminActivity" />
         <activity android:name=".activities.RegistrationActivity" />
         <activity android:name=".activities.LoginActivity" />

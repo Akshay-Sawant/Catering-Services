@@ -1,4 +1,4 @@
-package com.example.cateringapp.model;
+package com.example.cateringapp.models;
 
 public class User {
 

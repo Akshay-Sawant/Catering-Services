@@ -1,4 +1,4 @@
-package com.example.cateringapp.adapter;
+package com.example.cateringapp.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.cateringapp.R;
-import com.example.cateringapp.model.Reports;
+import com.example.cateringapp.models.Reports;
 
 import java.util.List;
 

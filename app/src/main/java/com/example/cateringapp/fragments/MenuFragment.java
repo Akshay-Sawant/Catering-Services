@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cateringapp.R;
-import com.example.cateringapp.adapter.PagerAdapter;
+import com.example.cateringapp.adapters.PagerAdapter;
 
 import java.util.Objects;
 
@@ -27,11 +27,11 @@ public class MenuFragment extends Fragment {
 
         Objects.requireNonNull(getActivity()).setTitle(R.string.menu);
 
-        /*tabLayout = view.findViewById(R.id.tab_layout);
+        tabLayout = view.findViewById(R.id.tab_layout);
         viewPager = view.findViewById(R.id.view_pager);
 
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.events));
         tabLayout.addTab(tabLayout.newTab().setText(R.string.tiffin));
+        tabLayout.addTab(tabLayout.newTab().setText(R.string.events));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
@@ -54,7 +54,7 @@ public class MenuFragment extends Fragment {
             public void onTabReselected(TabLayout.Tab tab) {
 
             }
-        });*/
+        });
 
         return view;
     }

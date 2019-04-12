@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dp_20">
+
+    <TextView
+        android:id="@+id/food_name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:hint="@string/food_item_name"
+        android:textColor="@color/black"
+        android:textStyle="normal" />
+
+    <ImageView
+        android:id="@+id/rupees_icon"
+        android:layout_width="@dimen/dp_10"
+        android:layout_height="@dimen/dp_10"
+        android:layout_below="@+id/food_name_text_view"
+        android:layout_marginTop="@dimen/dp_15"
+        android:src="@drawable/indian_rupee"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/food_item_amount_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/food_name_text_view"
+        android:layout_marginTop="@dimen/dp_9"
+        android:layout_toEndOf="@+id/rupees_icon"
+        android:hint="@string/food_item_amount_placeholder" />
+
+    <Button
+        android:id="@+id/add_food_to_cart_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/button_background"
+        android:elevation="@dimen/dp_4"
+        android:text="@string/add"
+        android:textColor="@color/blue"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/add_food_to_cart_btn"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@color/blue" />
+
+</RelativeLayout>

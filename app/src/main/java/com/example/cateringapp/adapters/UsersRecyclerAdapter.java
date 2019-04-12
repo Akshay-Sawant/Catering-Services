@@ -1,4 +1,4 @@
-package com.example.cateringapp.adapter;
+package com.example.cateringapp.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.AppCompatTextView;
@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cateringapp.R;
-import com.example.cateringapp.model.User;
+import com.example.cateringapp.models.User;
 
 import java.util.List;
 

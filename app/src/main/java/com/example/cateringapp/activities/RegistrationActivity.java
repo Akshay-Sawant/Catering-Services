@@ -2,7 +2,6 @@ package com.example.cateringapp.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -15,10 +14,8 @@ import android.view.View;
 
 import com.example.cateringapp.R;
 import com.example.cateringapp.database.DatabaseHelper;
-import com.example.cateringapp.model.User;
+import com.example.cateringapp.models.User;
 import com.example.cateringapp.utils.InputValidation;
-
-import java.util.Objects;
 
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener {
 

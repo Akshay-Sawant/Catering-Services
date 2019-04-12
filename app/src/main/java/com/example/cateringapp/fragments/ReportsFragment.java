@@ -3,7 +3,6 @@ package com.example.cateringapp.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -17,12 +16,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.cateringapp.R;
-import com.example.cateringapp.adapter.ReportsAdapter;
+import com.example.cateringapp.adapters.ReportsAdapter;
 import com.example.cateringapp.database.DatabaseHelper;
-import com.example.cateringapp.model.Reports;
+import com.example.cateringapp.models.Reports;
 import com.example.cateringapp.utils.DateUtilities;
 
-import java.security.PrivateKey;
 import java.util.Date;
 import java.util.List;
 

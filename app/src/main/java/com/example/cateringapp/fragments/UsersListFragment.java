@@ -15,9 +15,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cateringapp.R;
-import com.example.cateringapp.adapter.UsersRecyclerAdapter;
+import com.example.cateringapp.adapters.UsersRecyclerAdapter;
 import com.example.cateringapp.database.DatabaseHelper;
-import com.example.cateringapp.model.User;
+import com.example.cateringapp.models.User;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -6,24 +6,30 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
+import com.daimajia.slider.library.Animations.DescriptionAnimation;
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.example.cateringapp.R;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GalleryFragment extends Fragment {
+public class GalleryFragment extends Fragment implements ViewPager.OnPageChangeListener {
 
-    ViewFlipper viewFlipper;
-
-    @RequiresApi(api = Build.VERSION_CODES.ECLAIR_MR1)
+    SliderLayout gallerySlider;
+    HashMap<String, Integer> galleryHashMap;
+    TextSliderView galleryTextSliderView;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -33,33 +39,55 @@ public class GalleryFragment extends Fragment {
 
         Objects.requireNonNull(getActivity()).setTitle(R.string.gallery);
 
-        int images[] = {
-                R.drawable.one,
-                R.drawable.two,
-                R.drawable.three,
-                R.drawable.four,
-                R.drawable.five,
-                R.drawable.seven,
-                R.drawable.eight
-        };
+        galleryHashMap = new HashMap<>();
+        gallerySlider = view.findViewById(R.id.gallery_slider);
 
-        viewFlipper = view.findViewById(R.id.view_flipper);
+        galleryHashMap.put("One", R.drawable.one);
+        galleryHashMap.put("Two", R.drawable.two);
+        galleryHashMap.put("Three", R.drawable.three);
+        galleryHashMap.put("Four", R.drawable.four);
+        galleryHashMap.put("Five", R.drawable.five);
+        galleryHashMap.put("Six", R.drawable.six);
+        galleryHashMap.put("Seven", R.drawable.seven);
+        galleryHashMap.put("Eight", R.drawable.eight);
 
-        for (int image : images) {
-            flipeImage(image);
+        for (String name : galleryHashMap.keySet()) {
+            galleryTextSliderView = new TextSliderView(getActivity());
+            galleryTextSliderView.description(name)
+                    .image(galleryHashMap.get(name))
+                    .setScaleType(BaseSliderView.ScaleType.Fit)
+                    .bundle(new Bundle())
+                    .getBundle()
+                    .putString("extra", name);
+            gallerySlider.addSlider(galleryTextSliderView);
         }
+
+        gallerySlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
+        gallerySlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+        gallerySlider.setCustomAnimation(new DescriptionAnimation());
+        gallerySlider.setDuration(3000);
 
         return view;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.ECLAIR_MR1)
-    public void flipeImage(int image) {
-        ImageView imageView = new ImageView(getActivity());
-        imageView.setBackgroundResource(image);
-        viewFlipper.addView(imageView);
-        viewFlipper.setFlipInterval(4000);
-        viewFlipper.setAutoStart(true);
-        viewFlipper.setInAnimation(getActivity(), android.R.anim.slide_in_left);
-        viewFlipper.setOutAnimation(getActivity(), android.R.anim.slide_out_right);
+    @Override
+    public void onStop() {
+        gallerySlider.startAutoCycle();
+        super.onStop();
+    }
+
+    @Override
+    public void onPageScrolled(int i, float v, int i1) {
+
+    }
+
+    @Override
+    public void onPageSelected(int i) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int i) {
+
     }
 }

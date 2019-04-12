@@ -11,8 +11,8 @@
         android:layout_height="@dimen/dp_200"
         android:layout_marginStart="@dimen/dp_20"
         android:layout_marginTop="@dimen/dp_20"
-        android:src="@drawable/ic_launcher_background" />
--
+        android:src="@drawable/app_logo" />
+
     <TextView
         android:id="@+id/user_name_text"
         android:layout_width="wrap_content"

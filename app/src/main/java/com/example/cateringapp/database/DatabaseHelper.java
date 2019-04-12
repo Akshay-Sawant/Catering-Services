@@ -5,19 +5,18 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.annotation.Nullable;
 
-import com.example.cateringapp.model.Reports;
-import com.example.cateringapp.model.User;
+import com.example.cateringapp.models.Reports;
+import com.example.cateringapp.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.cateringapp.model.Reports.KEY_DATE;
-import static com.example.cateringapp.model.Reports.KEY_ID;
-import static com.example.cateringapp.model.Reports.KEY_NAME;
-import static com.example.cateringapp.model.Reports.KEY_PH_NO;
-import static com.example.cateringapp.model.Reports.TABLE_REPORTS;
+import static com.example.cateringapp.models.Reports.KEY_DATE;
+import static com.example.cateringapp.models.Reports.KEY_ID;
+import static com.example.cateringapp.models.Reports.KEY_NAME;
+import static com.example.cateringapp.models.Reports.KEY_PH_NO;
+import static com.example.cateringapp.models.Reports.TABLE_REPORTS;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -58,9 +57,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE);
-        db.close();
-        db.execSQL(Reports.TABLE_REPORTS);
-        db.close();
+//        db.close();
+/*        db.execSQL(Reports.TABLE_REPORTS);
+        db.close();*/
     }
 
     //Default method of SQLiteOpenHelper to update a database
@@ -68,7 +67,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //Delete the table if exists
         db.execSQL(DELETE_TABLE + TABLE_OF_USERS);
-        db.execSQL(DELETE_TABLE + Reports.TABLE_REPORTS);
+//        db.execSQL(DELETE_TABLE + Reports.TABLE_REPORTS);
 
         //Create table
         onCreate(db);
