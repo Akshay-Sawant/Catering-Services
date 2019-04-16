@@ -12,11 +12,13 @@ import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
+import android.widget.CheckBox;
 
 import com.example.cateringapp.R;
 import com.example.cateringapp.database.DatabaseHelper;
 import com.example.cateringapp.fragments.UsersListFragment;
 import com.example.cateringapp.utils.InputValidation;
+import com.example.cateringapp.utils.PrefManager;
 
 import java.util.Objects;
 
@@ -32,25 +34,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private AppCompatTextView mAppCompatTextViewLinkRegister;
     private InputValidation mInputValidation;
     private DatabaseHelper mDatabaseHelper;
+    private CheckBox rememberMeCheckbox;
 
     private String mEmail, mPassword;
+    PrefManager prefManager;
+    private Intent accountsIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        /**
-         * Hides the Action bar
-         *
-         * Checks if the SDK version is greater than KITKAT or not
-         * */
-/*
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Objects.requireNonNull(getSupportActionBar()).hide();
-        }
-*/
-
         context = LoginActivity.this;
 
         /**
@@ -83,6 +76,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         //Binding the link for REGISTRATION
         mAppCompatTextViewLinkRegister = findViewById(R.id.textViewLinkRegister);
+
+        //Binding the REMEMBER ME check box
+        rememberMeCheckbox = findViewById(R.id.remember_me_checkbox);
+
+        prefManager = new PrefManager(this);
     }
 
     /**
@@ -114,8 +112,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 verifyFromSQLiteFunc();
                 break;
             case R.id.textViewLinkRegister:
-
-                // Navigate to RegisterActivity
                 Intent intentRegister = new Intent(getApplicationContext(), RegistrationActivity.class);
                 startActivity(intentRegister);
                 break;
@@ -143,18 +139,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (!mInputValidation.isInputEditTextFilledFunc(mTextInputEditTextPassword, mTextInputLayoutPassword,
                 getString(R.string.error_message_email))) {
             return;
-       }
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             if (mDatabaseHelper.checkForUsers(Objects.requireNonNull(mTextInputEditTextEmail.getText()).toString().trim()
                     , Objects.requireNonNull(mTextInputEditTextPassword.getText()).toString().trim())) {
-
-
-                Intent accountsIntent = new Intent(context, HomeScreenActivity.class);
-                accountsIntent.putExtra("EMAIL", mTextInputEditTextEmail.getText().toString().trim());
-                emptyInputEditText();
-                startActivity(accountsIntent);
-                finish();
+                if (rememberMeCheckbox.isChecked()) {
+                    accountsIntent = new Intent(context, HomeScreenActivity.class);
+                    accountsIntent.putExtra("EMAIL", mTextInputEditTextEmail.getText().toString().trim());
+                    emptyInputEditText();
+                    PrefManager.setUsername(this, mTextInputEditTextEmail.getText().toString().trim());
+                    startActivity(accountsIntent);
+                    finish();
+                } else {
+                    accountsIntent = new Intent(context, HomeScreenActivity.class);
+                    accountsIntent.putExtra("EMAIL", mTextInputEditTextEmail.getText().toString().trim());
+                    emptyInputEditText();
+                    startActivity(accountsIntent);
+                    finish();
+                }
 
                 /*Bundle bundle = new Bundle();
                 bundle.putString("EMAIL", mTextInputEditTextEmail.getText().toString().trim());

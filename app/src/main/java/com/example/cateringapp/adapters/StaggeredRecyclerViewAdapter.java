@@ -2,6 +2,7 @@ package com.example.cateringapp.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -17,8 +18,22 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.cateringapp.R;
+import com.example.cateringapp.fragments.AmericanFragment;
+import com.example.cateringapp.fragments.BiryaniFragment;
+import com.example.cateringapp.fragments.BreakFastFragment;
+import com.example.cateringapp.fragments.ChickenFragment;
 import com.example.cateringapp.fragments.ChineseFragment;
+import com.example.cateringapp.fragments.DessertsFragment;
+import com.example.cateringapp.fragments.DinnerFragment;
+import com.example.cateringapp.fragments.HealthyFoodFragment;
+import com.example.cateringapp.fragments.IceCreamFragment;
+import com.example.cateringapp.fragments.IndianFragment;
+import com.example.cateringapp.fragments.JuicesFragment;
+import com.example.cateringapp.fragments.LunchFragment;
 import com.example.cateringapp.fragments.MenuFragment;
+import com.example.cateringapp.fragments.NorthIndianFragment;
+import com.example.cateringapp.fragments.SouthIndianFragment;
+import com.example.cateringapp.fragments.StreetFoodFragment;
 
 import java.util.ArrayList;
 
@@ -65,31 +80,37 @@ public class StaggeredRecyclerViewAdapter extends RecyclerView.Adapter<Staggered
         viewHolder.staggeredcCardContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (viewHolder.foodTypeText.getText().equals("Desserts")) {
-                    FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.container, new ChineseFragment()).commit();
+                if (viewHolder.foodTypeText.getText().equals("BreakFast")) {
+                    loadFragmentFunc(new BreakFastFragment());
+
+                } else if (viewHolder.foodTypeText.getText().equals("Lunch")) {
+                    loadFragmentFunc(new LunchFragment());
+                } else if (viewHolder.foodTypeText.getText().equals("Dinner")) {
+                    loadFragmentFunc(new DinnerFragment());
+                } else if (viewHolder.foodTypeText.getText().equals("Desserts")) {
+                    loadFragmentFunc(new DessertsFragment());
                 } else if (viewHolder.foodTypeText.getText().equals("Chinese")) {
-
+                    loadFragmentFunc(new ChineseFragment());
                 } else if (viewHolder.foodTypeText.getText().equals("Indian")) {
-
+                    loadFragmentFunc(new IndianFragment());
                 } else if (viewHolder.foodTypeText.getText().equals("North Indian")) {
-
+                    loadFragmentFunc(new NorthIndianFragment());
                 } else if (viewHolder.foodTypeText.getText().equals("South Indian")) {
-
+                    loadFragmentFunc(new SouthIndianFragment());
                 } else if (viewHolder.foodTypeText.getText().equals("Biryani")) {
-
+                    loadFragmentFunc(new BiryaniFragment());
                 } else if (viewHolder.foodTypeText.getText().equals("Ice Cream")) {
-
+                    loadFragmentFunc(new IceCreamFragment());
                 } else if (viewHolder.foodTypeText.getText().equals("Juices")) {
-
+                    loadFragmentFunc(new JuicesFragment());
                 } else if (viewHolder.foodTypeText.getText().equals("Street Food")) {
-
+                    loadFragmentFunc(new StreetFoodFragment());
                 } else if (viewHolder.foodTypeText.getText().equals("Healthy Food")) {
-
+                    loadFragmentFunc(new HealthyFoodFragment());
                 } else if (viewHolder.foodTypeText.getText().equals("Chicken")) {
-
+                    loadFragmentFunc(new ChickenFragment());
                 } else if (viewHolder.foodTypeText.getText().equals("American")) {
-
+                    loadFragmentFunc(new AmericanFragment());
                 } else if (viewHolder.foodTypeText.getText().equals("Italian")) {
 
                 } else if (viewHolder.foodTypeText.getText().equals("Vegetarian")) {
@@ -149,5 +170,10 @@ public class StaggeredRecyclerViewAdapter extends RecyclerView.Adapter<Staggered
             foodTypeImage = itemView.findViewById(R.id.food_type_image);
             foodTypeText = itemView.findViewById(R.id.food_type_name);
         }
+    }
+
+    public void loadFragmentFunc(Fragment fragment) {
+        FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
+        fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.container, fragment).commit();
     }
 }

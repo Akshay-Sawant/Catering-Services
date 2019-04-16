@@ -33,8 +33,14 @@ public class HomeFragment extends Fragment implements ViewPager.OnPageChangeList
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         Objects.requireNonNull(getActivity()).setTitle(R.string.home);
 
-        hashMap = new HashMap<>();
         sliderLayout = view.findViewById(R.id.slider);
+        setSliderLayoutFunc();
+
+        return view;
+    }
+
+    public void setSliderLayoutFunc(){
+        hashMap = new HashMap<>();
 
         hashMap.put(getString(R.string.biryani_dish), R.drawable.biryani_dishes);
         hashMap.put(getString(R.string.tandoori_dish), R.drawable.tandoori_dishes);
@@ -62,8 +68,6 @@ public class HomeFragment extends Fragment implements ViewPager.OnPageChangeList
         sliderLayout.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         sliderLayout.setCustomAnimation(new DescriptionAnimation());
         sliderLayout.setDuration(3000);
-
-        return view;
     }
 
     @Override

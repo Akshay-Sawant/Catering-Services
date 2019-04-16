@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tiffin_recycler_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.EventsFragment">
+    android:layout_height="wrap_content"
+    tools:context=".fragments.EventsFragment" />
 
-    <GridLayout
+    <!--<GridLayout
         android:id="@+id/grid_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -147,4 +148,4 @@
 
     </GridLayout>
 
-</ScrollView>
+</ScrollView>-->

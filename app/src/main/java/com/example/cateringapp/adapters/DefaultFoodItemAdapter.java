@@ -11,10 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cateringapp.R;
+import com.example.cateringapp.fragments.FoodCartFragment;
 
 import java.util.List;
 
@@ -24,6 +26,9 @@ public class DefaultFoodItemAdapter extends RecyclerView.Adapter<DefaultFoodItem
     private List<String> defaultFoodItemNameList, defaultFoodItemAmountList;
     private CoordinatorLayout defaultCoordinatorLayout;
     private Snackbar addToCartSnackbar;
+    private FoodCartFragment foodCartFragment;
+
+    private int count = 0;
 
     public DefaultFoodItemAdapter(Context defaultFoodItemContext, List<String> defaultFoodItemNameList, List<String> defaultFoodItemAmountList, CoordinatorLayout defaultCoordinatorLayout) {
         this.defaultFoodItemContext = defaultFoodItemContext;
@@ -41,23 +46,43 @@ public class DefaultFoodItemAdapter extends RecyclerView.Adapter<DefaultFoodItem
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final DefaultFoodItemViewHoldder defaultFoodItemViewHoldder, int position) {
+    public void onBindViewHolder(@NonNull final DefaultFoodItemViewHoldder defaultFoodItemViewHoldder, final int position) {
         defaultFoodItemViewHoldder.defaultFoodItemNameTextView.setText(defaultFoodItemNameList.get(position));
         defaultFoodItemViewHoldder.defaultFoodItemAmountTextView.setText(defaultFoodItemAmountList.get(position));
-        defaultFoodItemViewHoldder.defaultFoodItemAddButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Toast.makeText(defaultFoodItemContext, defaultFoodItemNameList.get(position), Toast.LENGTH_SHORT).show();
-                if (defaultFoodItemViewHoldder.defaultFoodItemAddButton.getText().equals("Add")) {
-                    defaultFoodItemViewHoldder.defaultFoodItemAddButton.setText(defaultFoodItemContext.getString(R.string.added));
-                    snackBarFunc();
-                    addToCartSnackbar.show();
-                } else {
-                    defaultFoodItemViewHoldder.defaultFoodItemAddButton.setText(R.string.add);
-//                    addToCartSnackbar.dismiss();
+
+        foodCartFragment = new FoodCartFragment();
+
+        if (defaultFoodItemContext == foodCartFragment.getContext()) {
+            defaultFoodItemViewHoldder.defaultFoodItemAddButton.setVisibility(View.GONE);
+
+            defaultFoodItemViewHoldder.defaultFoodItemDeleteButton.setVisibility(View.VISIBLE);
+            defaultFoodItemViewHoldder.defaultAddFoodItemButton.setVisibility(View.VISIBLE);
+            defaultFoodItemViewHoldder.defaultSubtractFoodItemButton.setVisibility(View.VISIBLE);
+            defaultFoodItemViewHoldder.defaultFoodCountTextView.setVisibility(View.VISIBLE);
+
+
+
+        } else {
+            defaultFoodItemViewHoldder.defaultFoodItemDeleteButton.setVisibility(View.GONE);
+            defaultFoodItemViewHoldder.defaultAddFoodItemButton.setVisibility(View.GONE);
+            defaultFoodItemViewHoldder.defaultSubtractFoodItemButton.setVisibility(View.GONE);
+            defaultFoodItemViewHoldder.defaultFoodCountTextView.setVisibility(View.GONE);
+
+            defaultFoodItemViewHoldder.defaultFoodItemAddButton.setVisibility(View.VISIBLE);
+            defaultFoodItemViewHoldder.defaultFoodItemAddButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(defaultFoodItemContext, defaultFoodItemNameList.get(position) + defaultFoodItemAmountList.get(position), Toast.LENGTH_SHORT).show();
+                    if (defaultFoodItemViewHoldder.defaultFoodItemAddButton.getText().equals("Add")) {
+                        defaultFoodItemViewHoldder.defaultFoodItemAddButton.setText(defaultFoodItemContext.getString(R.string.added));
+                        /*count++;
+                        int totalAmount = Integer.parseInt(String.valueOf(defaultFoodItemAmountList.get(position))) * count;*/
+                    } else {
+                        defaultFoodItemViewHoldder.defaultFoodItemAddButton.setText(R.string.add);
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     @Override
@@ -67,8 +92,9 @@ public class DefaultFoodItemAdapter extends RecyclerView.Adapter<DefaultFoodItem
 
     public class DefaultFoodItemViewHoldder extends RecyclerView.ViewHolder {
 
-        TextView defaultFoodItemNameTextView, defaultFoodItemAmountTextView;
+        TextView defaultFoodItemNameTextView, defaultFoodItemAmountTextView, defaultFoodCountTextView;
         Button defaultFoodItemAddButton;
+        ImageView defaultAddFoodItemButton, defaultSubtractFoodItemButton, defaultFoodItemDeleteButton;
 
         public DefaultFoodItemViewHoldder(@NonNull View itemView) {
             super(itemView);
@@ -76,6 +102,10 @@ public class DefaultFoodItemAdapter extends RecyclerView.Adapter<DefaultFoodItem
             defaultFoodItemNameTextView = itemView.findViewById(R.id.food_name_text_view);
             defaultFoodItemAmountTextView = itemView.findViewById(R.id.food_item_amount_text_view);
             defaultFoodItemAddButton = itemView.findViewById(R.id.add_food_to_cart_btn);
+            defaultAddFoodItemButton = itemView.findViewById(R.id.add_image);
+            defaultSubtractFoodItemButton = itemView.findViewById(R.id.minus_image);
+            defaultFoodCountTextView = itemView.findViewById(R.id.food_count_text_view);
+            defaultFoodItemDeleteButton = itemView.findViewById(R.id.delete_item_image);
         }
     }
 

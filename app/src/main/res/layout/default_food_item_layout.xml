@@ -37,13 +37,62 @@
         android:id="@+id/add_food_to_cart_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
         android:background="@drawable/button_background"
         android:elevation="@dimen/dp_4"
         android:text="@string/add"
         android:textColor="@color/blue"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="RelativeOverlap,UnusedAttribute" />
+
+    <ImageView
+        android:id="@+id/add_image"
+        android:layout_width="@dimen/dp_20"
+        android:layout_height="@dimen/dp_20"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/dp_20"
+        android:layout_toStartOf="@+id/delete_item_image"
+        android:src="@drawable/add"
+        android:tint="@color/blue"
+        android:visibility="gone"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/food_count_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_toStartOf="@+id/add_image"
+        android:hint="0"
+        android:textSize="@dimen/sp_20"
+        android:textStyle="bold"
+        android:visibility="gone"
+        tools:ignore="RelativeOverlap" />
+
+    <ImageView
+        android:id="@+id/minus_image"
+        android:layout_width="@dimen/dp_20"
+        android:layout_height="@dimen/dp_20"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_toStartOf="@+id/food_count_text_view"
+        android:src="@drawable/minus"
+        android:tint="@color/blue"
+        android:visibility="gone"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/delete_item_image"
+        android:layout_width="@dimen/dp_20"
+        android:layout_height="@dimen/dp_20"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/delete"
+        android:tint="@color/blue"
+        android:visibility="gone"
+        android:contentDescription="TODO" />
 
     <View
         android:id="@+id/view"

@@ -1,16 +1,21 @@
 package com.example.cateringapp.fragments;
 
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.ParcelUuid;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.cateringapp.R;
 import com.example.cateringapp.adapters.StaggeredRecyclerViewAdapter;
@@ -155,4 +160,49 @@ public class EventsFragment extends Fragment {
         eventsRecyclerView.setLayoutManager(staggeredGridLayoutManager);
         eventsRecyclerView.setAdapter(staggeredRecyclerViewAdapter);
     }
+
+    /*@Override
+    public void onResume() {
+        super.onResume();
+
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+
+                    *//*if (mDrawerLayout.isDrawerOpen(GravityCompat.START)){
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                    }
+                    return true;*//*
+                    appCloseConfirmationFunc();
+                }
+
+                return false;
+            }
+        });
+    }
+
+
+    public void appCloseConfirmationFunc() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Confirmation");
+        builder.setMessage("Are you sure you want to exit from this app?");
+        builder.setCancelable(false);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                getActivity().finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }*/
 }

@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +16,23 @@ import com.example.cateringapp.R;
 import com.example.cateringapp.activities.BreakFastActivity;
 import com.example.cateringapp.activities.DinnerActivity;
 import com.example.cateringapp.activities.LunchActivity;
+import com.example.cateringapp.adapters.DefaultFoodItemAdapter;
+import com.example.cateringapp.adapters.StaggeredRecyclerViewAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TiffinFragment extends Fragment implements View.OnClickListener {
+public class TiffinFragment extends Fragment {
 
-    private static final String TAG = "TiffinFragment";
-    CardView breakfastCard, lunchCard, dinnerCard;
+    private ArrayList<String> tiffinNamesList;
+    private ArrayList<Integer> tiffinImageUrlsList;
+    private RecyclerView tiffinRecyclerView;
+    StaggeredRecyclerViewAdapter tiffinStaggeredRecyclerViewAdapter;
+    StaggeredGridLayoutManager tiffinStaggeredGridLayoutManager;
+    private static final int NUM_COlUMNS = 2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,31 +40,32 @@ public class TiffinFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tiffin, container, false);
 
-        breakfastCard = view.findViewById(R.id.breakfast_card);
-        lunchCard = view.findViewById(R.id.lunch_card);
-        dinnerCard = view.findViewById(R.id.dinner_card);
+        tiffinRecyclerView = view.findViewById(R.id.tiffin_recycler_view);
 
-        breakfastCard.setOnClickListener(this);
-        lunchCard.setOnClickListener(this);
-        dinnerCard.setOnClickListener(this);
+        tiffinNamesList = new ArrayList<>();
+        tiffinImageUrlsList = new ArrayList<>();
+
+        addTiffinToArrayListFunc();
+        initializeTiffinRecyclerViewFunc();
 
         return view;
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.breakfast_card:
-                startActivity(new Intent(getActivity(), BreakFastActivity.class));
-                break;
-            case R.id.lunch_card:
-                startActivity(new Intent(getActivity(), LunchActivity.class));
-                break;
-            case R.id.dinner_card:
-                startActivity(new Intent(getActivity(), DinnerActivity.class));
-                break;
-        }
+    public void addTiffinToArrayListFunc() {
+        tiffinNamesList.add("BreakFast");
+        tiffinImageUrlsList.add(R.drawable.breakfast);
+
+        tiffinNamesList.add("Lunch");
+        tiffinImageUrlsList.add(R.drawable.lunch);
+
+        tiffinNamesList.add("Dinner");
+        tiffinImageUrlsList.add(R.drawable.dinner);
     }
 
-
+    public void initializeTiffinRecyclerViewFunc() {
+        tiffinStaggeredRecyclerViewAdapter = new StaggeredRecyclerViewAdapter(tiffinNamesList, tiffinImageUrlsList, getActivity());
+        tiffinStaggeredGridLayoutManager = new StaggeredGridLayoutManager(NUM_COlUMNS, LinearLayoutManager.VERTICAL);
+        tiffinRecyclerView.setLayoutManager(tiffinStaggeredGridLayoutManager);
+        tiffinRecyclerView.setAdapter(tiffinStaggeredRecyclerViewAdapter);
+    }
 }

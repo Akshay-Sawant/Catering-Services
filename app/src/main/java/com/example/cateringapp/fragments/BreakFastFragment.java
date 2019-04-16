@@ -1,19 +1,26 @@
-package com.example.cateringapp.activities;
+package com.example.cateringapp.fragments;
 
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.cateringapp.R;
 import com.example.cateringapp.adapters.DefaultFoodItemAdapter;
 
 import java.util.ArrayList;
 
-public class BreakFastActivity extends AppCompatActivity {
-    private static final String TAG = "BreakFastFragment";
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class BreakFastFragment extends Fragment {
+
     private ArrayList<String> mBreakFastNames, mBreakFastPrice;
     private RecyclerView breakFastRecyclerView;
     DefaultFoodItemAdapter breakfastDefaultFoodItemAdapter;
@@ -21,33 +28,22 @@ public class BreakFastActivity extends AppCompatActivity {
     CoordinatorLayout breakfastCoordinatorLayout;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_break_fast);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_break_fast, container, false);
+        getActivity().setTitle(R.string.breakfast);
 
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        breakfastCoordinatorLayout = findViewById(R.id.breakfast_root_layout);
-        breakFastRecyclerView = findViewById(R.id.break_fast_recycler_view);
+        breakfastCoordinatorLayout = view.findViewById(R.id.breakfast_root_layout);
+        breakFastRecyclerView = view.findViewById(R.id.break_fast_recycler_view);
 
         mBreakFastNames = new ArrayList<>();
         mBreakFastPrice = new ArrayList<>();
 
         addBreakFastDishesToArrayListFunc();
         initializeBreakFastRecyclerView();
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // app icon in action bar clicked; goto parent activity.
-                this.finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+        return view;
     }
 
     public void addBreakFastDishesToArrayListFunc() {
@@ -83,14 +79,9 @@ public class BreakFastActivity extends AppCompatActivity {
     }
 
     public void initializeBreakFastRecyclerView() {
-        breakfastDefaultFoodItemAdapter = new DefaultFoodItemAdapter(this, mBreakFastNames, mBreakFastPrice, breakfastCoordinatorLayout);
-        breakfastLinearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        breakfastDefaultFoodItemAdapter = new DefaultFoodItemAdapter(getActivity(), mBreakFastNames, mBreakFastPrice, breakfastCoordinatorLayout);
+        breakfastLinearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         breakFastRecyclerView.setLayoutManager(breakfastLinearLayoutManager);
         breakFastRecyclerView.setAdapter(breakfastDefaultFoodItemAdapter);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 }

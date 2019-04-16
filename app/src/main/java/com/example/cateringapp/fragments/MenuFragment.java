@@ -25,7 +25,7 @@ public class MenuFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
-        Objects.requireNonNull(getActivity()).setTitle(R.string.menu);
+        getActivity().setTitle(R.string.menu);
 
         tabLayout = view.findViewById(R.id.tab_layout);
         viewPager = view.findViewById(R.id.view_pager);

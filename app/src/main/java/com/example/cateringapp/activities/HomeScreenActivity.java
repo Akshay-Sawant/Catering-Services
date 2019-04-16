@@ -16,13 +16,16 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cateringapp.R;
 import com.example.cateringapp.fragments.AboutUsFragment;
 import com.example.cateringapp.fragments.ContactUsFragment;
+import com.example.cateringapp.fragments.FoodCartFragment;
 import com.example.cateringapp.fragments.GalleryFragment;
 import com.example.cateringapp.fragments.HomeFragment;
 import com.example.cateringapp.fragments.MenuFragment;
@@ -97,27 +100,48 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.action_bar_menu, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.food_cart:
+                callFragmentsFunc(new FoodCartFragment(), null);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+                callFragmentsFunc(new HomeFragment(), "Home");
                 break;
             case R.id.menu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, new MenuFragment()).commit();
+                callFragmentsFunc(new MenuFragment(), "Menu");
                 break;
             case R.id.gallery:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, new GalleryFragment()).commit();
+                callFragmentsFunc(new GalleryFragment(), "Gallery");
                 break;
             case R.id.contact:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, new ContactUsFragment()).commit();
+                callFragmentsFunc(new ContactUsFragment(), "Contact");
                 break;
             case R.id.about_us:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, new AboutUsFragment()).commit();
+                callFragmentsFunc(new AboutUsFragment(), "About");
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
 
         return true;
+    }
+
+    public void callFragmentsFunc(Fragment fragment, String s) {
+        getSupportFragmentManager().beginTransaction().addToBackStack(s).replace(R.id.container, fragment).commit();
     }
 
     @Override
@@ -182,10 +206,18 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            //if size is `1` it means first fragment is visible and we can exit from application
+        } else if (getSupportFragmentManager().getBackStackEntryCount() == 0 || toolbar.getTitle().equals("Home") || toolbar.getTitle().equals("Menu")) {
+            // or just go back to main activity
             appCloseConfirmationFunc();
+        } else if (toolbar.getTitle().equals("My Food Cart")){
+            // only show dialog while there's back stack entry
+//            appCloseConfirmationFunc();
+            super.onBackPressed();
+        } else {
+            super.onBackPressed();
         }
+
+//        if (getSupportFragmentManager().getBackStackEntryCount() == 1)
     }
 
     public void appCloseConfirmationFunc() {
