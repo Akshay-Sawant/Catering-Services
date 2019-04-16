@@ -126,4 +126,11 @@ order delicious home-style food in convenient packaging- ALL ONLINE.</string>
     <string name="cancel_order">Cancel Order</string>
     <string name="grand_total">Grand Total:</string>
     <string name="remember_me">Remember me</string>
+    <string name="logout">Logout</string>
+    <string name="yes_button_of_alert">Yes</string>
+    <string name="no_button_of_alert">No</string>
+    <string name="app_close_alert_message">Are you sure you want to exit from this app?</string>
+    <string name="app_close_alert_title">Confirmation</string>
+    <string name="not_a_member_regsiter">Not a member? Register</string>
+    <string name="already_a_member_login">Already a member? Login</string>
 </resources>

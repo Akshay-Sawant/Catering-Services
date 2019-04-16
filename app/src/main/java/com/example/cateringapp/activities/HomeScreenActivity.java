@@ -16,16 +16,20 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cateringapp.R;
 import com.example.cateringapp.fragments.AboutUsFragment;
 import com.example.cateringapp.fragments.HomeFragment;
 import com.example.cateringapp.fragments.MenuFragment;
+import com.example.cateringapp.utils.PrefManager;
 import com.github.clans.fab.FloatingActionButton;
 
+import java.util.HashMap;
 import java.util.Stack;
 
 public class HomeScreenActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -38,6 +42,8 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
     private Intent sendIntent;
     private Stack<Fragment> fragmentStack;
     private FragmentManager fragmentManager;
+    private AlertDialog.Builder builder;
+    private PrefManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +52,9 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
 
         fragmentStack = new Stack<>();
         fragmentManager = getSupportFragmentManager();
+        prefManager = new PrefManager(HomeScreenActivity.this);
 
         bindingViewFunc();
-
-        /*String emailFromIntent = getIntent().getStringExtra("EMAIL");
-        usernameText.setText(emailFromIntent);*/
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.container, new HomeFragment()).commit();
@@ -95,6 +99,23 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.action_bar_menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.food_cart:
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.home:
@@ -105,6 +126,9 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
                 break;
             case R.id.about_us:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, new AboutUsFragment()).commit();
+                break;
+            case R.id.logout:
+                logoutFunc();
                 break;
         }
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -181,17 +205,38 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
     }
 
     public void appCloseConfirmationFunc() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Confirmation");
-        builder.setMessage("Are you sure you want to exit from this app?");
+        builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.app_close_alert_title);
+        builder.setMessage(R.string.app_close_alert_message);
         builder.setCancelable(false);
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.yes_button_of_alert, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
             }
         });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.no_button_of_alert, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
+
+    public void logoutFunc() {
+        builder = new AlertDialog.Builder(HomeScreenActivity.this);
+        builder.setMessage("Are you sure you want to logout?");
+        builder.setCancelable(false);
+        builder.setPositiveButton(R.string.yes_button_of_alert, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                prefManager.logoutUser(HomeScreenActivity.this);
+                startActivity(new Intent(HomeScreenActivity.this, LoginActivity.class));
+                finish();
+            }
+        });
+        builder.setNegativeButton(R.string.no_button_of_alert, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
