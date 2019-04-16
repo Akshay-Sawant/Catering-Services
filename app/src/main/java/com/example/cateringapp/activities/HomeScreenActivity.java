@@ -22,8 +22,6 @@ import android.widget.TextView;
 
 import com.example.cateringapp.R;
 import com.example.cateringapp.fragments.AboutUsFragment;
-import com.example.cateringapp.fragments.ContactUsFragment;
-import com.example.cateringapp.fragments.GalleryFragment;
 import com.example.cateringapp.fragments.HomeFragment;
 import com.example.cateringapp.fragments.MenuFragment;
 import com.github.clans.fab.FloatingActionButton;
@@ -104,12 +102,6 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
                 break;
             case R.id.menu:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, new MenuFragment()).commit();
-                break;
-            case R.id.gallery:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, new GalleryFragment()).commit();
-                break;
-            case R.id.contact:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, new ContactUsFragment()).commit();
                 break;
             case R.id.about_us:
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, new AboutUsFragment()).commit();
