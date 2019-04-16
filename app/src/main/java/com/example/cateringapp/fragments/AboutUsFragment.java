@@ -1,6 +1,7 @@
 package com.example.cateringapp.fragments;
 
 
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -8,8 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.daimajia.slider.library.Animations.DescriptionAnimation;
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.example.cateringapp.R;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 /**
@@ -18,10 +24,9 @@ import java.util.Objects;
 public class AboutUsFragment extends Fragment {
 
 
-    public AboutUsFragment() {
-        // Required empty public constructor
-    }
-
+    SliderLayout gallerySlider;
+    HashMap<String, Integer> galleryHashMap;
+    TextSliderView galleryTextSliderView;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -29,9 +34,56 @@ public class AboutUsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_about_us, container, false);
 
-        Objects.requireNonNull(getActivity()).setTitle(R.string.about);
+        Objects.requireNonNull(getActivity()).setTitle("About Us");
 
-        return  view;
+        galleryHashMap = new HashMap<>();
+        gallerySlider = view.findViewById(R.id.gallery_slider);
+
+        galleryHashMap.put("Stop, eat and go!", R.drawable.one);
+        galleryHashMap.put("An amazing experience for all.", R.drawable.two);
+        galleryHashMap.put("Friendly serving.", R.drawable.three);
+        galleryHashMap.put("The flavors of nature", R.drawable.four);
+        galleryHashMap.put("Fresh, colorful, delicious.", R.drawable.five);
+        galleryHashMap.put("Only for foodies", R.drawable.seven);
+        galleryHashMap.put("The good taste of food", R.drawable.eight);
+
+        for (String name : galleryHashMap.keySet()) {
+            galleryTextSliderView = new TextSliderView(getActivity());
+            galleryTextSliderView.description(name)
+                    .image(galleryHashMap.get(name))
+                    .setScaleType(BaseSliderView.ScaleType.Fit)
+                    .bundle(new Bundle())
+                    .getBundle()
+                    .putString("extra", name);
+            gallerySlider.addSlider(galleryTextSliderView);
+        }
+
+        gallerySlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
+        gallerySlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+        gallerySlider.setCustomAnimation(new DescriptionAnimation());
+        gallerySlider.setDuration(3000);
+
+        return view;
+    }
+
+    @Override
+    public void onStop() {
+        gallerySlider.startAutoCycle();
+        super.onStop();
+    }
+
+
+    public void onPageScrolled(int i, float v, int i1) {
+
+    }
+
+
+    public void onPageSelected(int i) {
+
+    }
+
+    public void onPageScrollStateChanged(int i) {
+
     }
 
 }

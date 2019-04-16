@@ -21,10 +21,16 @@
     <string name="follow_us_on_fb">Follow us on our Facebook Page</string>
     <string name="location">Location</string>
     <string name="locate_us">Locate Us</string>
-    <string name="gallery_text1">1. We believe in being all around catering service provide home made food, just like "Ghar Jaisa Khaana" with affortable price.</string>
-    <string name="gallery_text2">2. This service provide food for parties, public or private get-together, wedding, and so on.</string>
-    <string name="gallery_text3">3. A catering service providing quality product, imely delivery, special customer attention and provide facilities.</string>
-    <string name="gallery_text4">4. We believe in providing tiffins in mumbai that are healthy, homely and hygienic.</string>
+    <string name="gallery_text1"> We believe in being all around catering service provide home made food, just like "Ghar Jaisa Khaana" with affortable price.</string>
+    <string name="gallery_text2"> This service provide food for parties, public or private get-together, wedding, and so on.</string>
+    <string name="gallery_text3"> A catering service providing quality product, imely delivery, special customer attention and provide facilities.</string>
+    <string name="gallery_text4"> We believe in providing tiffins in mumbai that are healthy, homely and hygienic.</string>
+    <string name="gallery_text5">You have found your catering team for all occasions! Our website is designed to
+assist those who are planning Corporate Events, Weddings, Private Parties. Within, there is a wealth of information to help you plan your festive
+affair. As you prepare for your celebration, do not forget thid Catering App.
+</string>
+<string name="gallery_text6">Catering Service App is Mumbais  first food-commerce tiffin service which allows you to
+order delicious home-style food in convenient packaging- ALL ONLINE.</string>
     <string name="events">Events</string>
     <string name="tiffin">Tiffin</string>
     <string name="home">Home</string>
