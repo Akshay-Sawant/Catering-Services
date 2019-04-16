@@ -1,22 +1,30 @@
 package com.example.cateringapp.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cateringapp.R;
 import com.example.cateringapp.database.DatabaseHelper;
 import com.example.cateringapp.fragments.UsersListFragment;
+import com.example.cateringapp.utils.CustomSnackBarHelper;
 import com.example.cateringapp.utils.InputValidation;
 import com.example.cateringapp.utils.PrefManager;
 
@@ -26,7 +34,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private Context context;
 
-    private NestedScrollView mNestedScrollView;
+    private RelativeLayout mRelativeLayout;
     private TextInputLayout mTextInputLayoutEmail, mTextInputLayoutPassword;
     private TextInputEditText mTextInputEditTextEmail, mTextInputEditTextPassword;
 
@@ -39,6 +47,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private String mEmail, mPassword;
     PrefManager prefManager;
     private Intent accountsIntent;
+    private Snackbar loginSnackBar;
+    private CustomSnackBarHelper loginCustomSnackBarHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +56,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         context = LoginActivity.this;
 
+        prefManager = new PrefManager(LoginActivity.this);
         /**
          * Calling functions
          *
@@ -53,6 +64,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
          * Initialize Listeners function
          * Initialize Objects function
          * */
+
+        loginCustomSnackBarHelper = new CustomSnackBarHelper();
+
         bindingViewsByIdFunc();
         initializeListenersFunc();
         initializeObjectsFunc();
@@ -61,7 +75,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void bindingViewsByIdFunc() {
 
         //Binding the nested scrollview
-        mNestedScrollView = findViewById(R.id.nestedScrollView);
+        mRelativeLayout = findViewById(R.id.relative_layout);
 
         //Binding the text input layout fields for EMAIL and PASSWORD
         mTextInputLayoutEmail = findViewById(R.id.textInputLayoutEmail);
@@ -124,6 +138,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
      * Validate the input text fields
      * Verify login credentials using SQLite
      */
+    @SuppressLint("Range")
     private void verifyFromSQLiteFunc() {
         mEmail = "shobhachaudhary421@gmail.com";
         mPassword = "shobha123";
@@ -142,35 +157,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            if (mDatabaseHelper.checkForUsers(Objects.requireNonNull(mTextInputEditTextEmail.getText()).toString().trim()
-                    , Objects.requireNonNull(mTextInputEditTextPassword.getText()).toString().trim())) {
-                if (rememberMeCheckbox.isChecked()) {
-                    accountsIntent = new Intent(context, HomeScreenActivity.class);
-                    accountsIntent.putExtra("EMAIL", mTextInputEditTextEmail.getText().toString().trim());
-                    emptyInputEditText();
-                    PrefManager.setUsername(this, mTextInputEditTextEmail.getText().toString().trim());
-                    startActivity(accountsIntent);
-                    finish();
-                } else {
-                    accountsIntent = new Intent(context, HomeScreenActivity.class);
-                    accountsIntent.putExtra("EMAIL", mTextInputEditTextEmail.getText().toString().trim());
-                    emptyInputEditText();
-                    startActivity(accountsIntent);
-                    finish();
-                }
-
-                /*Bundle bundle = new Bundle();
-                bundle.putString("EMAIL", mTextInputEditTextEmail.getText().toString().trim());
+            if (rememberMeCheckbox.isChecked() && mDatabaseHelper.checkForUsers(Objects.requireNonNull(mTextInputEditTextEmail.getText()).toString().trim()
+                    , Objects.requireNonNull(mTextInputEditTextPassword.getText()).toString().trim()) && rememberMeCheckbox.isChecked()) {
+                PrefManager.setUsername(this, mTextInputEditTextEmail.getText().toString().trim());
+                PrefManager.setPassword(this, mTextInputEditTextPassword.getText().toString().trim());
+                accountsIntent = new Intent(context, HomeScreenActivity.class);
                 emptyInputEditText();
-                getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new UsersListFragment(), bundle.toString()).commit();*/
-
-
+                startActivity(accountsIntent);
+                finish();
+            } else if (mDatabaseHelper.checkForUsers(Objects.requireNonNull(mTextInputEditTextEmail.getText()).toString().trim()
+                    , Objects.requireNonNull(mTextInputEditTextPassword.getText()).toString().trim())) {
+                accountsIntent = new Intent(context, HomeScreenActivity.class);
+                emptyInputEditText();
+                startActivity(accountsIntent);
+                finish();
             } else if (mTextInputEditTextEmail.getText().toString().trim().equals(mEmail) && mTextInputEditTextPassword.getText().toString().trim().equals(mPassword)) {
                 startActivity(new Intent(LoginActivity.this, AdminActivity.class));
                 finish();
             } else {
                 // Snack Bar to show success message that record is wrong
-                Snackbar.make(mNestedScrollView, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
+                loginCustomSnackBarHelper.snackBarFunc(context, mRelativeLayout, getString(R.string.error_valid_email_password), Snackbar.LENGTH_SHORT);
             }
         }
     }
@@ -181,5 +187,29 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void emptyInputEditText() {
         mTextInputEditTextEmail.setText(null);
         mTextInputEditTextPassword.setText(null);
+    }
+
+    @Override
+    public void onBackPressed() {
+        exitFromAppFunc();
+    }
+
+    public void exitFromAppFunc() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.app_close_alert_title);
+        builder.setMessage(R.string.app_close_alert_message);
+        builder.setPositiveButton(R.string.yes_button_of_alert, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        builder.setNegativeButton(R.string.no_button_of_alert, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
     }
 }

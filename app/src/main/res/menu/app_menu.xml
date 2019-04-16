@@ -15,7 +15,6 @@
             android:id="@+id/menu"
             android:icon="@drawable/ic_restaurant_menu"
             android:title="@string/menu" />
-
     </group>
 
     <item android:title="@string/communicate">
@@ -26,6 +25,10 @@
                 android:icon="@drawable/ic_about_us"
                 android:title="@string/about" />
 
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/logout"
+                android:title="@string/logout" />
         </menu>
 
     </item>

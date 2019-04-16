@@ -22,11 +22,9 @@ public class PrefManager {
 
     private static final String USERNAME = "username";
     private static final String PASSWORD = "password";
-    private static final boolean LOGGED_IN = false;
     private static final String FOOD_NAME = "food_name";
     private static final String FOOD_PRICE = "price";
     private static final String MENU_TYPE = "menu_type";
-    private static final String LOG_IN = "login";
 
     public PrefManager(Context context) {
         this._context = context;
@@ -87,11 +85,10 @@ public class PrefManager {
         editor.apply();
     }
 
-    public static boolean isLoggedIn(Context ctx) {
-        return getSharedPreferences(ctx).getBoolean(LOG_IN, LOGGED_IN);
-    }
-
-    public static void setLoggedIn() {
-
+    public void logoutUser(Context context) {
+        editor = PrefManager.getSharedPreferences(context).edit();
+        editor.remove(USERNAME);
+        editor.remove(PASSWORD);
+        editor.apply();
     }
 }

@@ -1,27 +1,30 @@
 package com.example.cateringapp.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
+import android.widget.ScrollView;
 
 import com.example.cateringapp.R;
 import com.example.cateringapp.database.DatabaseHelper;
 import com.example.cateringapp.models.User;
+import com.example.cateringapp.utils.CustomSnackBarHelper;
 import com.example.cateringapp.utils.InputValidation;
+import com.example.cateringapp.utils.PrefManager;
 
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Context context;
 
-    private NestedScrollView nestedScrollView;
+    private ScrollView mRegisterScrollView;
 
     private TextInputLayout textInputLayoutName;
     private TextInputLayout textInputLayoutEmail;
@@ -40,16 +43,17 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private DatabaseHelper databaseHelper;
     private User user;
 
+    PrefManager prefManager;
+    private CustomSnackBarHelper registerCustomSnackBarHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Objects.requireNonNull(getSupportActionBar()).hide();
-        }*/
-
         context = RegistrationActivity.this;
+        prefManager = new PrefManager(context);
+        registerCustomSnackBarHelper = new CustomSnackBarHelper();
         initViews();
         initListeners();
         initObjects();
@@ -59,7 +63,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
      * This method is to initialize views
      */
     private void initViews() {
-        nestedScrollView = findViewById(R.id.nestedScrollView);
+        mRegisterScrollView = findViewById(R.id.register_scrollview);
 
         textInputLayoutName = findViewById(R.id.textInputLayoutName);
         textInputLayoutEmail = findViewById(R.id.textInputLayoutEmail);
@@ -119,6 +123,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     /**
      * This method is to validate the input text fields and post data to SQLite
      */
+    @SuppressLint("Range")
     private void postDataToSQLite() {
         if (!inputValidation.isInputEditTextFilledFunc(textInputEditTextName, textInputLayoutName, getString(R.string.error_message_name))) {
             return;
@@ -145,6 +150,9 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
             databaseHelper.addUsers(user);
 
+            PrefManager.setUsername(context, textInputEditTextEmail.getText().toString().trim());
+            PrefManager.setPassword(context, textInputEditTextPassword.getText().toString().trim());
+
             Intent accountsIntent = new Intent(context, HomeScreenActivity.class);
             accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
             emptyInputEditText();
@@ -152,13 +160,11 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             finish();
 
             // Snack Bar to show success message that record saved successfully
-            Snackbar.make(nestedScrollView, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
+            registerCustomSnackBarHelper.snackBarFunc(context, mRegisterScrollView, getString(R.string.success_message), Snackbar.LENGTH_SHORT);
             emptyInputEditText();
-
-
         } else {
             // Snack Bar to show error message that record already exists
-            Snackbar.make(nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
+            registerCustomSnackBarHelper.snackBarFunc(context, mRegisterScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_SHORT);
         }
 
 

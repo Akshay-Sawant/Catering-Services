@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.cateringapp.R;
 import com.example.cateringapp.utils.PrefManager;
+
+import java.util.HashMap;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -21,11 +24,11 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
                 //Anonymous Class Declaration
-                if (PrefManager.getUsername(SplashScreenActivity.this) != null) {
-                    startActivity(new Intent(SplashScreenActivity.this, HomeScreenActivity.class));
+                if (PrefManager.getUsername(SplashScreenActivity.this).equals("") && PrefManager.getPassword(SplashScreenActivity.this).equals("")) {
+                    startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));
                     finish();
                 } else {
-                    startActivity(new Intent(SplashScreenActivity.this, WelcomeActivity.class));
+                    startActivity(new Intent(SplashScreenActivity.this, HomeScreenActivity.class));
                     finish();
                 }
             }
