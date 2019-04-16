@@ -31,7 +31,7 @@
             android:layout_marginTop="20dp"
             android:paddingLeft="@dimen/dp_40"
             android:paddingRight="@dimen/dp_40"
-            android:text="Slide 1"
+            android:text="Giving your Hunger a new Option"
             android:textAlignment="center"
             android:textColor="@color/grey"
             android:textSize="@dimen/sp_16" />

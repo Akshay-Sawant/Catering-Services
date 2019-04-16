@@ -47,13 +47,12 @@ public class ReportsAdapter extends ArrayAdapter<Reports> {
     }
 
     // inflate view
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+  /*  public View getView(int position, View convertView, ViewGroup parent) {
         final Reports mLog = reportsList.get(position);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.list_reports, parent, false);
         TextView personContact = v.findViewById(R.id.contact);
         personContact.setText(mLog.get_name());
         return v;
-    }
+    }*/
 }
