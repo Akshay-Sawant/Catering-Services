@@ -164,4 +164,20 @@
     <string name="work">Work</string>
     <string name="delivery_details">Delivery Details</string>
     <string name="delivery_address">Delivery Address</string>
+    <string name="when">When</string>
+    <string name="other_options">Other Options</string>
+    <string name="select_work_delivery_address">Select Work Delivery Address</string>
+    <string name="enter_a_new_address">Enter a new address</string>
+    <string name="save">Save</string>
+    <string name="service_type">Service type</string>
+    <string name="event_name">Event Name</string>
+    <string name="asap_as_soon_as_possible">Asap (As Soon As Possible)</string>
+    <string name="schedule_service">Schedule Service</string>
+    <string name="schedule_an_order">Schedule an order</string>
+    <string name="schedule_a_date">Schedule a date</string>
+
+    <string-array name="delivery_address_type">
+        <item>Home</item>
+        <item>Work</item>
+    </string-array>
 </resources>

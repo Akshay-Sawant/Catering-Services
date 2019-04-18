@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.DeliveryWhenFragment">
+
+    <Spinner
+        android:id="@+id/delivery_service_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/gradient_spinner" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/delivery_service_type"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_10">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_20">
+
+            <TextView
+                android:id="@+id/tiffin_service_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="@string/service_type"
+                android:textAllCaps="true"
+                android:textColor="@color/blue"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/break_fast_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tiffin_service_type"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="@string/breakfast"
+                android:textColor="@color/blue" />
+
+            <CheckBox
+                android:id="@+id/lunch_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tiffin_service_type"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_toEndOf="@+id/break_fast_service"
+                android:text="@string/lunch"
+                android:textColor="@color/blue" />
+
+            <CheckBox
+                android:id="@+id/dinner_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tiffin_service_type"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_toEndOf="@+id/lunch_service"
+                android:text="@string/dinner"
+                android:textColor="@color/blue" />
+
+            <EditText
+                android:id="@+id/event_name_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dinner_service"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="@drawable/button_background"
+                android:hint="@string/event_name"
+                android:inputType="textCapWords|textAutoCorrect|textAutoComplete"
+                android:padding="@dimen/dp_10"
+                android:textColor="@color/blue"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/schedule_tiffin_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/event_name_edit_text"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="@string/schedule_service"
+                android:textAllCaps="true"
+                android:textColor="@color/blue"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/asap_tiffin_service"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/schedule_tiffin_service"
+                android:layout_marginTop="@dimen/dp_5"
+                android:text="@string/asap_as_soon_as_possible"
+                android:textColor="@color/blue" />
+
+            <TextView
+                android:id="@+id/schedule_an_order_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/asap_tiffin_service"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="@string/schedule_an_order"
+                android:textAllCaps="true"
+                android:textColor="@color/blue"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_below="@+id/schedule_an_order_text_view"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="@color/grey" />
+
+            <TextView
+                android:id="@+id/schedule_order_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/schedule_an_order_text_view"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/dp_30"
+                android:layout_marginTop="@dimen/dp_20"
+                android:text="@string/schedule_a_date"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/sp_16" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="@dimen/dp_25"
+                android:layout_below="@+id/schedule_an_order_text_view"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/dp_20"
+                android:background="@color/grey" />
+
+            <TextView
+                android:id="@+id/schedule_order_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/schedule_an_order_text_view"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginEnd="@dimen/dp_30"
+                android:text="@string/schedule_a_date"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/sp_16" />
+
+            <!--<DatePicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TimePicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />-->
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

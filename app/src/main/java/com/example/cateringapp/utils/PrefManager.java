@@ -27,6 +27,8 @@ public class PrefManager {
     private static final String FOOD_NAME = "food_name";
     private static final String FOOD_PRICE = "price";
     private static final String MENU_TYPE = "menu_type";
+    private static final String HOME_ADDRESS = "home_address";
+    private static final String WORK_ADDRESS = "work_address";
 
     public PrefManager(Context context) {
         this._context = context;
@@ -111,6 +113,26 @@ public class PrefManager {
         editor = PrefManager.getSharedPreferences(context).edit();
         editor.remove(USERNAME);
         editor.remove(PASSWORD);
+        editor.apply();
+    }
+
+    public static String getHomeAddress(Context ctx) {
+        return getSharedPreferences(ctx).getString(HOME_ADDRESS, "");
+    }
+
+    public static void setHomeAddress(Context context, String homeAddress) {
+        editor = PrefManager.getSharedPreferences(context).edit();
+        editor.putString(HOME_ADDRESS, homeAddress);
+        editor.apply();
+    }
+
+    public static String getWorkAddress(Context ctx) {
+        return getSharedPreferences(ctx).getString(WORK_ADDRESS, "");
+    }
+
+    public static void setWorkAddress(Context context, String workAddress) {
+        editor = PrefManager.getSharedPreferences(context).edit();
+        editor.putString(WORK_ADDRESS, workAddress);
         editor.apply();
     }
 }

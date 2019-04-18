@@ -71,5 +71,4 @@ public class AboutUsFragment extends Fragment implements View.OnClickListener {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.container, fragment).commit();
     }
-
 }

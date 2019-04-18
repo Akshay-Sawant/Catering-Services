@@ -1,217 +1,323 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.SettingsFragment">
 
-    <LinearLayout
-        android:id="@+id/user_profile_container"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginEnd="@dimen/dp_10"
-        android:background="@color/white"
-        android:elevation="@dimen/dp_4"
-        android:orientation="vertical"
-        android:padding="@dimen/dp_20"
-        tools:ignore="UnusedAttribute,UselessParent">
+        android:layout_height="wrap_content">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/user_profile_picture_circle_image_view"
-            android:layout_width="@dimen/dp_200"
-            android:layout_height="@dimen/dp_200"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_users_profile"
-            tools:ignore="UnusedAttribute" />
-
-        <TextView
-            android:id="@+id/profile_name_text_view"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/user_profile_container"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/dp_20"
-            android:text="Akshay Sawant"
-            android:textAllCaps="false"
-            android:textColor="@color/grey"
-            android:textSize="@dimen/sp_18"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/visit_account_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/dp_10"
             android:layout_marginTop="@dimen/dp_10"
-            android:text="@string/edit_account"
-            android:textAllCaps="true"
-            android:textColor="@color/green"
-            android:textStyle="bold" />
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@color/white"
+            android:elevation="@dimen/dp_4"
+            android:padding="@dimen/dp_20"
+            tools:ignore="UnusedAttribute">
 
-    </LinearLayout>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/user_saved_place_card_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/user_profile_container"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginEnd="@dimen/dp_10"
-        app:cardElevation="@dimen/dp_4">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_profile_picture_circle_image_view"
+                android:layout_width="@dimen/dp_150"
+                android:layout_height="@dimen/dp_150"
+                android:layout_marginTop="@dimen/dp_20"
+                android:src="@drawable/ic_users_profile" />
 
             <TextView
-                android:id="@+id/saved_places_title"
+                android:id="@+id/user_full_name_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="@dimen/dp_10"
-                android:layout_marginTop="@dimen/dp_20"
-                android:text="@string/saved_places"
+                android:layout_marginStart="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_120"
+                android:layout_toEndOf="@id/user_profile_picture_circle_image_view"
+                android:ellipsize="end"
+                android:hint="@string/full_name"
+                android:maxLines="1"
+                android:textAllCaps="true"
                 android:textColor="@color/blue"
-                android:textSize="@dimen/sp_18" />
-
-            <ImageView
-                android:id="@+id/saved_places_home_icon"
-                android:layout_width="@dimen/dp_20"
-                android:layout_height="@dimen/dp_20"
-                android:layout_below="@+id/saved_places_title"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/dp_10"
-                android:layout_marginTop="@dimen/dp_30"
-                android:src="@drawable/ic_home"
-                android:tint="@color/blue"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:id="@+id/home_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/saved_places_title"
-                android:layout_marginStart="@dimen/dp_10"
-                android:layout_marginTop="@dimen/dp_20"
-                android:layout_toEndOf="@+id/saved_places_home_icon"
-                android:text="@string/home"
-                android:textColor="@color/blue"
+                android:textSize="@dimen/sp_16"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/home_text_view"
+                android:id="@+id/user_name_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/home_title"
-                android:layout_marginStart="@dimen/dp_10"
-                android:layout_toEndOf="@+id/saved_places_home_icon"
-                android:text="@string/home"
-                android:textColor="@color/blue" />
-
-            <ImageView
-                android:id="@+id/saved_place_work_icon"
-                android:layout_width="@dimen/dp_20"
-                android:layout_height="@dimen/dp_20"
-                android:layout_below="@+id/home_text_view"
-                android:layout_marginStart="@dimen/dp_10"
-                android:layout_marginTop="@dimen/dp_30"
-                android:src="@drawable/ic_work"
-                android:tint="@color/blue"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:id="@+id/saved_places_work_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/home_text_view"
-                android:layout_marginStart="@dimen/dp_10"
-                android:layout_marginTop="@dimen/dp_20"
-                android:layout_toEndOf="@+id/saved_place_work_icon"
-                android:text="@string/work"
-                android:textColor="@color/blue"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/saved_places_work_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/saved_places_work_title"
-                android:layout_marginStart="@dimen/dp_10"
-                android:layout_marginBottom="@dimen/dp_10"
-                android:layout_toEndOf="@+id/saved_place_work_icon"
-                android:text="@string/work"
+                android:layout_below="@+id/user_full_name_text_view"
+                android:layout_marginStart="@dimen/dp_20"
+                android:layout_toEndOf="@+id/user_profile_picture_circle_image_view"
+                android:ellipsize="end"
+                android:hint="@string/username"
+                android:maxLines="1"
+                android:textAllCaps="false"
                 android:textColor="@color/blue" />
 
         </RelativeLayout>
 
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/user_delivery_details_card_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/user_saved_place_card_container"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_10"
-        android:layout_marginEnd="@dimen/dp_10"
-        app:cardElevation="4dp">
-
-        <RelativeLayout
+        <android.support.v7.widget.CardView
+            android:id="@+id/user_saved_place_card_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_profile_container"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            app:cardElevation="@dimen/dp_4">
 
-            <TextView
-                android:id="@+id/delivery_details_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp_10"
-                android:layout_marginTop="@dimen/dp_20"
-                android:text="@string/delivery_details"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/sp_18"
-                android:textStyle="bold" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/delivery_address_icon"
-                android:layout_width="@dimen/dp_20"
-                android:layout_height="@dimen/dp_20"
-                android:layout_below="@+id/delivery_details_title"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/dp_10"
-                android:layout_marginTop="@dimen/dp_30"
-                android:src="@drawable/ic_launcher_background"
-                android:tint="@color/blue"
-                tools:ignore="ContentDescription" />
+                <TextView
+                    android:id="@+id/saved_places_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:text="@string/saved_places"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/sp_18"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/delivery_address_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/delivery_details_title"
-                android:layout_marginStart="@dimen/dp_10"
-                android:layout_marginTop="@dimen/dp_20"
-                android:layout_toEndOf="@id/delivery_address_icon"
-                android:text="@string/delivery_address"
-                android:textColor="@color/blue"
-                android:textStyle="bold" />
+                <ImageView
+                    android:id="@+id/saved_places_home_icon"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_below="@+id/saved_places_title"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_30"
+                    android:src="@drawable/ic_home"
+                    android:tint="@color/blue"
+                    tools:ignore="ContentDescription" />
 
-            <TextView
-                android:id="@+id/delivery_address_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/delivery_address_title"
-                android:layout_marginStart="@dimen/dp_10"
-                android:layout_marginBottom="@dimen/dp_10"
-                android:layout_toEndOf="@+id/delivery_address_icon"
-                android:text="@string/delivery_address"
-                android:textColor="@color/blue" />
+                <TextView
+                    android:id="@+id/home_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/saved_places_title"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_toEndOf="@+id/saved_places_home_icon"
+                    android:text="@string/home"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold" />
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/home_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/home_title"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_toEndOf="@+id/saved_places_home_icon"
+                    android:text="@string/home"
+                    android:textColor="@color/blue" />
 
-    </android.support.v7.widget.CardView>
+                <ImageView
+                    android:id="@+id/saved_place_work_icon"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_below="@+id/home_text_view"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_30"
+                    android:src="@drawable/ic_work"
+                    android:tint="@color/blue"
+                    tools:ignore="ContentDescription" />
 
-</RelativeLayout>
+                <TextView
+                    android:id="@+id/saved_places_work_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/home_text_view"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_toEndOf="@+id/saved_place_work_icon"
+                    android:text="@string/work"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/saved_places_work_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/saved_places_work_title"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:layout_toEndOf="@+id/saved_place_work_icon"
+                    android:text="@string/work"
+                    android:textColor="@color/blue" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/user_delivery_details_card_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_saved_place_card_container"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            app:cardElevation="4dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/delivery_details_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:text="@string/delivery_details"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/sp_18"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/delivery_address_icon"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_below="@+id/delivery_details_title"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_30"
+                    android:src="@drawable/ic_location"
+                    android:tint="@color/blue"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/delivery_address_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/delivery_details_title"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_toEndOf="@id/delivery_address_icon"
+                    android:text="@string/delivery_address"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/delivery_address_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/delivery_address_title"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:layout_toEndOf="@+id/delivery_address_icon"
+                    android:text="@string/delivery_address"
+                    android:textColor="@color/blue" />
+
+                <ImageView
+                    android:id="@+id/delivery_when_icon"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_below="@+id/delivery_address_text_view"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_30"
+                    android:src="@drawable/ic_when"
+                    android:tint="@color/blue"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/delivery_when_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/delivery_address_text_view"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_toEndOf="@+id/delivery_when_icon"
+                    android:text="@string/when"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/delivery_when_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/delivery_when_title"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:layout_toEndOf="@+id/delivery_when_icon"
+                    android:text="@string/when"
+                    android:textColor="@color/blue" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/user_other_option_card_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/user_delivery_details_card_container"
+            android:layout_margin="@dimen/dp_10"
+            app:cardElevation="@dimen/dp_4">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/other_options_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:text="@string/other_options"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/sp_18"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/other_option_sign_out_icon"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_below="@+id/other_options_title"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:src="@drawable/logout"
+                    android:tint="@color/blue"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/other_options_sign_out_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/other_options_title"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:layout_toEndOf="@+id/other_option_sign_out_icon"
+                    android:text="@string/logout"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+</ScrollView>
