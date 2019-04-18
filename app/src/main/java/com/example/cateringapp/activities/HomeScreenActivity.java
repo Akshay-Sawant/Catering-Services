@@ -198,9 +198,19 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
+        } else if (getSupportFragmentManager().getBackStackEntryCount() == 0 || toolbar.getTitle().equals("Home")
+                || toolbar.getTitle().equals("Menu") || toolbar.getTitle().equals("About Us")) {
             //if size is `1` it means first fragment is visible and we can exit from application
             appCloseConfirmationFunc();
+        } else {
+            super.onBackPressed();
+            /**
+             * 1. Shared Preferences (Cache)
+             * 2. Internal (Primary)
+             * 3. External (Secondary/SD Card)
+             * 4. SQLite
+             * 5. Networks (API)
+             * */
         }
     }
 

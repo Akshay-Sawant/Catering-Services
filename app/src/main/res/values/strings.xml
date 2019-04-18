@@ -29,7 +29,7 @@
 assist those who are planning Corporate Events, Weddings, Private Parties. Within, there is a wealth of information to help you plan your festive
 affair. As you prepare for your celebration, do not forget thid Catering App.
 </string>
-<string name="gallery_text6">Catering Service App is Mumbais  first food-commerce tiffin service which allows you to
+    <string name="gallery_text6">Catering Service App is Mumbais  first food-commerce tiffin service which allows you to
 order delicious home-style food in convenient packaging- ALL ONLINE.</string>
     <string name="events">Events</string>
     <string name="tiffin">Tiffin</string>
@@ -133,4 +133,14 @@ order delicious home-style food in convenient packaging- ALL ONLINE.</string>
     <string name="app_close_alert_title">Confirmation</string>
     <string name="not_a_member_regsiter">Not a member? Register</string>
     <string name="already_a_member_login">Already a member? Login</string>
+    <string name="see_location">see your location</string>
+    <string name="donate_food">Donate food</string>
+    <string name="donte_description">we suggest you do your bit and donate it for the benefit of those who aren\'t as privileged as you are. Here\'s a list of five Indian NGOs that you can volunteer with, or donate food to, and ensure that fewer people in your city go hungry today. They take excess food from individuals, weddings, restaurants, and corporate offices, and donate it to the underprivileged.</string>
+    <string name="click_here">Click Here</string>
+    <string name="ngo_s_details">NGO\'s Details</string>
+    <string name="Desc_ngo">No Food Waste is a mission to end food waste and hunger to make the “World Hunger Free”. We recover surplus food from weddings, parties and functions and donate it to needy and hungry people.</string>
+    <string name="NGO_one_contact">To find out more about them, you can contact them on 91-9867-221-310 or +91-8652-760-542.</string>
+    <string name="NGOone_name">Roti Bank by Dabbawalas</string>
+    <string name="ngo_two_name">Reborn Humanity Association</string>
+    <string name="ngo_two_contact">To find out more about them, you can contact them on . 91-9022189964.</string>
 </resources>
