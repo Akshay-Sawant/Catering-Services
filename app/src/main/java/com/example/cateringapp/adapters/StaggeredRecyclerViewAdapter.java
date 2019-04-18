@@ -82,7 +82,6 @@ public class StaggeredRecyclerViewAdapter extends RecyclerView.Adapter<Staggered
             public void onClick(View v) {
                 if (viewHolder.foodTypeText.getText().equals("BreakFast")) {
                     loadFragmentFunc(new BreakFastFragment());
-
                 } else if (viewHolder.foodTypeText.getText().equals("Lunch")) {
                     loadFragmentFunc(new LunchFragment());
                 } else if (viewHolder.foodTypeText.getText().equals("Dinner")) {

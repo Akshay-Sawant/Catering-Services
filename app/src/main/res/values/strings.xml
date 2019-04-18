@@ -21,16 +21,16 @@
     <string name="follow_us_on_fb">Follow us on our Facebook Page</string>
     <string name="location">Location</string>
     <string name="locate_us">Locate Us</string>
-    <string name="gallery_text1"> We believe in being all around catering service provide home made food, just like "Ghar Jaisa Khaana" with affortable price.</string>
-    <string name="gallery_text2"> This service provide food for parties, public or private get-together, wedding, and so on.</string>
-    <string name="gallery_text3"> A catering service providing quality product, imely delivery, special customer attention and provide facilities.</string>
-    <string name="gallery_text4"> We believe in providing tiffins in mumbai that are healthy, homely and hygienic.</string>
-    <string name="gallery_text5">You have found your catering team for all occasions! Our website is designed to
-assist those who are planning Corporate Events, Weddings, Private Parties. Within, there is a wealth of information to help you plan your festive
-affair. As you prepare for your celebration, do not forget thid Catering App.
-</string>
-<string name="gallery_text6">Catering Service App is Mumbais  first food-commerce tiffin service which allows you to
-order delicious home-style food in convenient packaging- ALL ONLINE.</string>
+    <string name="gallery_text1">1. We believe in being all around catering service provide home made food, just like "Ghar Jaisa Khaana" with affortable price.</string>
+    <string name="gallery_text2">2. This service provide food for parties, public or private get-together, wedding, and so on.</string>
+    <string name="gallery_text3">3. A catering service providing quality product, imely delivery, special customer attention and provide facilities.</string>
+    <string name="gallery_text4">4. We believe in providing tiffins in mumbai that are healthy, homely and hygienic.</string>
+    <string name="gallery_text5">5. You have found your catering team for all occasions!</string>
+    <string name="gallery_text6">6. Our website is designed to assist those who are planning Corporate Events, Weddings, Private Parties.</string>
+    <string name="gallery_text7">7. Within, there is a wealth of information to help you plan your festive affair.</string>
+    <string name="gallery_text8">8. As you prepare for your celebration, do not forget thid Catering App.</string>
+    <string name="gallery_text9">9. Catering Service App is Mumbai\'s  first food-commerce tiffin service which allows you to
+        order delicious home-style food in convenient packaging - ALL ONLINE.</string>
     <string name="events">Events</string>
     <string name="tiffin">Tiffin</string>
     <string name="home">Home</string>
@@ -155,4 +155,13 @@ order delicious home-style food in convenient packaging- ALL ONLINE.</string>
     <string name="NGOone_name">Roti Bank by Dabbawalas</string>
     <string name="ngo_two_name">Reborn Humanity Association</string>
     <string name="ngo_two_contact">To find out more about them, you can contact them on . 91-9022189964.</string>
+    <string name="help">Help</string>
+    <string name="legal">Legal</string>
+    <string name="information">Information</string>
+    <string name="payment">Payment</string>
+    <string name="edit_account">Edit Account</string>
+    <string name="saved_places">Saved Places</string>
+    <string name="work">Work</string>
+    <string name="delivery_details">Delivery Details</string>
+    <string name="delivery_address">Delivery Address</string>
 </resources>

@@ -27,6 +27,7 @@ import com.example.cateringapp.R;
 import com.example.cateringapp.fragments.AboutUsFragment;
 import com.example.cateringapp.fragments.HomeFragment;
 import com.example.cateringapp.fragments.MenuFragment;
+import com.example.cateringapp.fragments.SettingsFragment;
 import com.example.cateringapp.utils.PrefManager;
 import com.github.clans.fab.FloatingActionButton;
 
@@ -133,7 +134,7 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
                 loadHomeScreenActivityFragmentsFunc(new AboutUsFragment());
                 break;
             case R.id.settings:
-                loadHomeScreenActivityFragmentsFunc(new AboutUsFragment());
+                loadHomeScreenActivityFragmentsFunc(new SettingsFragment());
                 break;
             case R.id.logout:
                 logoutFunc();

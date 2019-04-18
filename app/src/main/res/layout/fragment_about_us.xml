@@ -1,73 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".fragments.AboutUsFragment">
-    <LinearLayout
+
+    <ImageView
+        android:id="@+id/help_imgae_view"
+        android:layout_width="@dimen/dp_20"
+        android:layout_height="@dimen/dp_20"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_30"
+        android:src="@drawable/ic_help"
+        android:tint="@color/blue"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/help_text_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_toEndOf="@+id/help_imgae_view"
+        android:padding="@dimen/dp_10"
+        android:text="@string/help"
+        android:textAllCaps="true"
+        android:textColor="@color/blue"
+        android:textStyle="bold" />
 
-        <com.daimajia.slider.library.SliderLayout
-            android:id="@+id/gallery_slider"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_250" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_below="@+id/help_text_view"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:background="@color/grey" />
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="@dimen/dp_20">
+    <ImageView
+        android:id="@+id/legal_image_view"
+        android:layout_width="@dimen/dp_20"
+        android:layout_height="@dimen/dp_20"
+        android:layout_below="@+id/help_imgae_view"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_50"
+        android:src="@drawable/ic_legal"
+        android:tint="@color/blue"
+        tools:ignore="ContentDescription" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/legal_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/help_text_view"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_toEndOf="@+id/help_imgae_view"
+        android:padding="@dimen/dp_10"
+        android:text="@string/legal"
+        android:textAllCaps="true"
+        android:textColor="@color/blue"
+        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/gallery_text_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:text="@string/gallery_text1" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_below="@+id/legal_text_view"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:background="@color/grey" />
 
-                <TextView
-                    android:id="@+id/gallery_text_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/gallery_text_1"
-                    android:text="@string/gallery_text2" />
+    <ImageView
+        android:id="@+id/info_image_view"
+        android:layout_width="@dimen/dp_20"
+        android:layout_height="@dimen/dp_20"
+        android:layout_below="@+id/legal_text_view"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_40"
+        android:src="@drawable/ic_info_black_24dp"
+        android:tint="@color/blue"
+        tools:ignore="ContentDescription" />
 
-                <TextView
-                    android:id="@+id/gallery_text_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/gallery_text_2"
-                    android:text="@string/gallery_text3" />
+    <TextView
+        android:id="@+id/info_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/legal_text_view"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_toEndOf="@+id/help_imgae_view"
+        android:padding="@dimen/dp_10"
+        android:text="@string/information"
+        android:textAllCaps="true"
+        android:textColor="@color/blue"
+        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/gallery_text_4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/gallery_text_3"
-                    android:text="@string/gallery_text4" />
-                <TextView
-                    android:id="@+id/gallery_text_5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/gallery_text_4"
-                    android:text="@string/gallery_text5" />
-                <TextView
-                    android:id="@+id/gallery_text_6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/gallery_text_5"
-                    android:text="@string/gallery_text6" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_below="@+id/info_text_view"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:background="@color/grey" />
 
-            </RelativeLayout>
-
-        </ScrollView>
-
-    </LinearLayout>
-
-</FrameLayout>
+</RelativeLayout>

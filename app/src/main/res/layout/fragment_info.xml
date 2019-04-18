@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.InfoFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <com.daimajia.slider.library.SliderLayout
+            android:id="@+id/gallery_slider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_300" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_20"
+            app:cardElevation="@dimen/dp_4">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                android:padding="@dimen/dp_10"
+                android:scrollbars="none">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/gallery_text_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:text="@string/gallery_text1"
+                        android:textColor="@color/blue" />
+
+                    <TextView
+                        android:id="@+id/gallery_text_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/gallery_text_1"
+                        android:text="@string/gallery_text2"
+                        android:textColor="@color/blue" />
+
+                    <TextView
+                        android:id="@+id/gallery_text_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/gallery_text_2"
+                        android:text="@string/gallery_text3"
+                        android:textColor="@color/blue" />
+
+                    <TextView
+                        android:id="@+id/gallery_text_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/gallery_text_3"
+                        android:text="@string/gallery_text4"
+                        android:textColor="@color/blue" />
+
+                    <TextView
+                        android:id="@+id/gallery_text_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/gallery_text_4"
+                        android:text="@string/gallery_text5"
+                        android:textColor="@color/blue" />
+
+                    <TextView
+                        android:id="@+id/gallery_text_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/gallery_text_5"
+                        android:text="@string/gallery_text6"
+                        android:textColor="@color/blue" />
+
+                    <TextView
+                        android:id="@+id/gallery_text_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/gallery_text_6"
+                        android:text="@string/gallery_text7"
+                        android:textColor="@color/blue" />
+
+                    <TextView
+                        android:id="@+id/gallery_text_8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/gallery_text_7"
+                        android:text="@string/gallery_text8"
+                        android:textColor="@color/blue" />
+
+                    <TextView
+                        android:id="@+id/gallery_text_9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/gallery_text_8"
+                        android:text="@string/gallery_text9"
+                        android:textColor="@color/blue" />
+
+                </RelativeLayout>
+
+            </ScrollView>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</FrameLayout>

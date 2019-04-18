@@ -1,89 +1,75 @@
 package com.example.cateringapp.fragments;
 
 
-
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.daimajia.slider.library.Animations.DescriptionAnimation;
-import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.example.cateringapp.R;
 
-import java.util.HashMap;
 import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AboutUsFragment extends Fragment {
+public class AboutUsFragment extends Fragment implements View.OnClickListener {
 
 
-    SliderLayout gallerySlider;
-    HashMap<String, Integer> galleryHashMap;
-    TextSliderView galleryTextSliderView;
+    private TextView helpAboutUsFragmentTexView, legalAboutUsFragmentTexView, inforAboutUsFragmentTextView;
+    private Context aboutUsFragmentContext;
+    private View viewAboutUsFragment;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_about_us, container, false);
+        viewAboutUsFragment = inflater.inflate(R.layout.fragment_about_us, container, false);
 
         Objects.requireNonNull(getActivity()).setTitle("About Us");
 
-        galleryHashMap = new HashMap<>();
-        gallerySlider = view.findViewById(R.id.gallery_slider);
+        aboutUsFragmentContext = getActivity();
 
-        galleryHashMap.put("Stop, eat and go!", R.drawable.one);
-        galleryHashMap.put("An amazing experience for all.", R.drawable.two);
-        galleryHashMap.put("Friendly serving.", R.drawable.three);
-        galleryHashMap.put("The flavors of nature", R.drawable.four);
-        galleryHashMap.put("Fresh, colorful, delicious.", R.drawable.five);
-        galleryHashMap.put("Only for foodies", R.drawable.seven);
-        galleryHashMap.put("The good taste of food", R.drawable.eight);
+        aboutUsFragmentContext = getActivity();
 
-        for (String name : galleryHashMap.keySet()) {
-            galleryTextSliderView = new TextSliderView(getActivity());
-            galleryTextSliderView.description(name)
-                    .image(galleryHashMap.get(name))
-                    .setScaleType(BaseSliderView.ScaleType.Fit)
-                    .bundle(new Bundle())
-                    .getBundle()
-                    .putString("extra", name);
-            gallerySlider.addSlider(galleryTextSliderView);
-        }
+        bindingViewAboutUsFragmentFunc();
 
-        gallerySlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
-        gallerySlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-        gallerySlider.setCustomAnimation(new DescriptionAnimation());
-        gallerySlider.setDuration(3000);
+        return viewAboutUsFragment;
+    }
 
-        return view;
+    public void bindingViewAboutUsFragmentFunc() {
+        helpAboutUsFragmentTexView = viewAboutUsFragment.findViewById(R.id.help_text_view);
+        legalAboutUsFragmentTexView = viewAboutUsFragment.findViewById(R.id.legal_text_view);
+        inforAboutUsFragmentTextView = viewAboutUsFragment.findViewById(R.id.info_text_view);
+
+        helpAboutUsFragmentTexView.setOnClickListener(this);
+        legalAboutUsFragmentTexView.setOnClickListener(this);
+        inforAboutUsFragmentTextView.setOnClickListener(this);
     }
 
     @Override
-    public void onStop() {
-        gallerySlider.startAutoCycle();
-        super.onStop();
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.help_text_view:
+                loadAboutUsFragmentFunc(new HelpFragment());
+                break;
+            case R.id.legal_text_view:
+                loadAboutUsFragmentFunc(new LegalFragment());
+                break;
+            case R.id.info_text_view:
+                loadAboutUsFragmentFunc(new InfoFragment());
+                break;
+        }
     }
 
-
-    public void onPageScrolled(int i, float v, int i1) {
-
-    }
-
-
-    public void onPageSelected(int i) {
-
-    }
-
-    public void onPageScrollStateChanged(int i) {
-
+    public void loadAboutUsFragmentFunc(Fragment fragment) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().addToBackStack(null).replace(R.id.container, fragment).commit();
     }
 
 }
