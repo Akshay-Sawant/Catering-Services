@@ -19,7 +19,8 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryDark">@color/grey</item>
-        <item name="colorAccent">@color/blue</item>-
+        <item name="colorAccent">@color/blue</item>
+        <item name="actionOverflowButtonStyle">@style/DotsDarkTheme</item>
         <item name="actionBarTheme">@style/AppTheme.AppBarOverlay</item>
     </style>
 
@@ -35,6 +36,13 @@
     <style name="custom_fab">
         <item name="android:background">@drawable/fab_label_background</item>
         <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="DotsDarkTheme" parent="@style/Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">@color/blue</item>
+        <item name="android:icon">@color/blue</item>
+        <item name="android:foregroundTint" tools:ignore="NewApi">@color/blue</item>
+        <item name="android:backgroundTint" tools:ignore="NewApi">@color/blue</item>
     </style>
 
 </resources>

@@ -1,6 +1,7 @@
 package com.example.cateringapp.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -44,13 +45,14 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
     private FragmentManager fragmentManager;
     private AlertDialog.Builder builder;
     private PrefManager prefManager;
+    private Context homeScreenActivityContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-        fragmentStack = new Stack<>();
+        homeScreenActivityContext = HomeScreenActivity.this;
         fragmentManager = getSupportFragmentManager();
         prefManager = new PrefManager(HomeScreenActivity.this);
 
@@ -109,7 +111,10 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.food_cart:
-
+                startActivity(new Intent(homeScreenActivityContext, MyFoodCartActivity.class));
+                break;
+            case R.id.user_profile:
+                startActivity(new Intent(homeScreenActivityContext, UserProfileActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -119,13 +124,16 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+                loadHomeScreenActivityFragmentsFunc(new HomeFragment());
                 break;
             case R.id.menu:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, new MenuFragment()).commit();
+                loadHomeScreenActivityFragmentsFunc(new MenuFragment());
                 break;
             case R.id.about_us:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, new AboutUsFragment()).commit();
+                loadHomeScreenActivityFragmentsFunc(new AboutUsFragment());
+                break;
+            case R.id.settings:
+                loadHomeScreenActivityFragmentsFunc(new AboutUsFragment());
                 break;
             case R.id.logout:
                 logoutFunc();
@@ -134,6 +142,10 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
         drawerLayout.closeDrawer(GravityCompat.START);
 
         return true;
+    }
+
+    public void loadHomeScreenActivityFragmentsFunc(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
     }
 
     @Override
@@ -199,7 +211,7 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else if (getSupportFragmentManager().getBackStackEntryCount() == 0 || toolbar.getTitle().equals("Home")
-                || toolbar.getTitle().equals("Menu") || toolbar.getTitle().equals("About Us")) {
+                || toolbar.getTitle().equals("Menu") || toolbar.getTitle().equals("About Us") || toolbar.getTitle().equals("Settings")) {
             //if size is `1` it means first fragment is visible and we can exit from application
             appCloseConfirmationFunc();
         } else {

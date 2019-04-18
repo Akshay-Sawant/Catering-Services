@@ -46,7 +46,7 @@
                 android:id="@+id/SelectChoice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-              android:layout_marginStart="@dimen/dim_70dp"
+              android:layout_marginStart="70dp"
                 android:layout_marginTop="@dimen/dp_20"
                 android:ems="10"
                 android:hint="Yes / No"
@@ -56,7 +56,7 @@
                 android:id="@+id/GoToNext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dim_100dp"
+                android:layout_marginStart="@dimen/dp_100"
                 android:layout_marginTop="@dimen/dp_20"
                 android:background="@color/dot_light_screen2"
                 android:text="@string/click_here" />

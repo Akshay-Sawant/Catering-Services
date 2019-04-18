@@ -36,8 +36,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private TextInputEditText textInputEditTextPassword;
     private TextInputEditText textInputEditTextConfirmPassword;
 
-    private AppCompatButton appCompatButtonRegister;
-    private AppCompatTextView appCompatTextViewLoginLink;
+    private AppCompatButton appCompatButtonRegister, appCompatTextViewLoginLink;
 
     private InputValidation inputValidation;
     private DatabaseHelper databaseHelper;

@@ -20,7 +20,9 @@ public class PrefManager {
 
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
 
+    private static final String USERFULLNAME = "user_full_name";
     private static final String USERNAME = "username";
+    private static final String MOBILE_NO = "mobile_no";
     private static final String PASSWORD = "password";
     private static final String FOOD_NAME = "food_name";
     private static final String FOOD_PRICE = "price";
@@ -65,6 +67,16 @@ public class PrefManager {
         editor.apply();
     }
 
+    public static String getUserFullName(Context ctx) {
+        return getSharedPreferences(ctx).getString(USERFULLNAME, "");
+    }
+
+    public static void setUserFullName(Context context, String userFullName) {
+        editor = PrefManager.getSharedPreferences(context).edit();
+        editor.putString(USERFULLNAME, userFullName);
+        editor.apply();
+    }
+
     public static String getUsername(Context ctx) {
         return getSharedPreferences(ctx).getString(USERNAME, "");
     }
@@ -72,6 +84,16 @@ public class PrefManager {
     public static void setUsername(Context context, String username) {
         editor = PrefManager.getSharedPreferences(context).edit();
         editor.putString(USERNAME, username);
+        editor.apply();
+    }
+
+    public static String getMobileNo(Context ctx) {
+        return getSharedPreferences(ctx).getString(MOBILE_NO, "");
+    }
+
+    public static void setMobileNo(Context context, String mobile_no) {
+        editor = PrefManager.getSharedPreferences(context).edit();
+        editor.putString(MOBILE_NO, mobile_no);
         editor.apply();
     }
 

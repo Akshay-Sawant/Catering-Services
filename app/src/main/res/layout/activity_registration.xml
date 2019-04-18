@@ -57,7 +57,7 @@
                         android:id="@+id/textInputEditTextName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/username"
+                        android:hint="@string/full_name"
                         android:inputType="text"
                         android:maxLines="1"
                         android:textColor="@android:color/black" />
@@ -164,17 +164,43 @@
             android:textColor="@color/blue"
             android:textStyle="bold" />
 
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/appCompatTextViewLoginLink"
-            android:layout_width="fill_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_50"
             android:layout_marginTop="@dimen/dp_20"
-            android:layout_marginBottom="@dimen/dp_20"
-            android:gravity="center"
-            android:text="@string/already_a_member_login"
-            android:textColor="@color/blue"
-            android:textSize="@dimen/sp_16"
-            android:textStyle="bold" />
+            android:layout_marginEnd="@dimen/dp_50"
+            android:layout_marginBottom="@dimen/dp_50"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/already_member_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start|center_vertical"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_weight="0.7"
+                android:gravity="end"
+                android:text="@string/text_already_member"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/sp_16" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/appCompatTextViewLoginLink"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_weight="0.3"
+                android:background="@color/blue"
+                android:elevation="@dimen/dp_4"
+                android:gravity="center"
+                android:text="@string/login"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                tools:ignore="UnusedAttribute" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

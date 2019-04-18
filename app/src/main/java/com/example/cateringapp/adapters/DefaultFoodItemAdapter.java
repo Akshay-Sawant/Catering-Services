@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cateringapp.R;
-import com.example.cateringapp.fragments.FoodCartFragment;
+import com.example.cateringapp.activities.MyFoodCartActivity;
 
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class DefaultFoodItemAdapter extends RecyclerView.Adapter<DefaultFoodItem
     private List<String> defaultFoodItemNameList, defaultFoodItemAmountList;
     private CoordinatorLayout defaultCoordinatorLayout;
     private Snackbar addToCartSnackbar;
-    private FoodCartFragment foodCartFragment;
+    private MyFoodCartActivity myFoodCartActivity;
 
     private int count = 0;
 
@@ -50,9 +49,9 @@ public class DefaultFoodItemAdapter extends RecyclerView.Adapter<DefaultFoodItem
         defaultFoodItemViewHoldder.defaultFoodItemNameTextView.setText(defaultFoodItemNameList.get(position));
         defaultFoodItemViewHoldder.defaultFoodItemAmountTextView.setText(defaultFoodItemAmountList.get(position));
 
-        foodCartFragment = new FoodCartFragment();
+        myFoodCartActivity = new MyFoodCartActivity();
 
-        if (defaultFoodItemContext == foodCartFragment.getContext()) {
+        if (defaultFoodItemContext == myFoodCartActivity) {
             defaultFoodItemViewHoldder.defaultFoodItemAddButton.setVisibility(View.GONE);
 
             defaultFoodItemViewHoldder.defaultFoodItemDeleteButton.setVisibility(View.VISIBLE);

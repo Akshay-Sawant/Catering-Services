@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="AlwaysShowAction">
     <item
         android:id="@+id/food_cart"
         android:icon="@drawable/ic_food_cart"
-        app:showAsAction="always"
-        android:title="@string/food_cart" />
+        android:title="@string/food_cart"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/user_profile"
+        android:icon="@drawable/ic_users_profile"
+        android:title="@string/users_profile"
+        app:showAsAction="always" />
+
 </menu>

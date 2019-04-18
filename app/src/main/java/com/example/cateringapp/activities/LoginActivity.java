@@ -38,8 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextInputLayout mTextInputLayoutEmail, mTextInputLayoutPassword;
     private TextInputEditText mTextInputEditTextEmail, mTextInputEditTextPassword;
 
-    private AppCompatButton mAppCompatButtonLogin;
-    private AppCompatTextView mAppCompatTextViewLinkRegister;
+    private AppCompatButton mAppCompatButtonLogin, mAppCompatTextViewLinkRegister;
     private InputValidation mInputValidation;
     private DatabaseHelper mDatabaseHelper;
     private CheckBox rememberMeCheckbox;
