@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="@dimen/dp_20">
 
     <TextView
@@ -53,9 +53,10 @@
         android:layout_height="@dimen/dp_20"
         android:layout_centerVertical="true"
         android:layout_marginEnd="@dimen/dp_20"
-        android:src="@drawable/add"
         android:layout_toStartOf="@+id/add_food_to_cart_btn"
+        android:src="@drawable/add"
         android:tint="@color/blue"
+        android:visibility="gone"
         tools:ignore="ContentDescription" />
 
     <TextView
@@ -68,6 +69,7 @@
         android:hint="0"
         android:textSize="@dimen/sp_20"
         android:textStyle="bold"
+        android:visibility="gone"
         tools:ignore="RelativeOverlap" />
 
     <ImageView
@@ -79,6 +81,7 @@
         android:layout_toStartOf="@+id/food_count_text_view"
         android:src="@drawable/minus"
         android:tint="@color/blue"
+        android:visibility="gone"
         tools:ignore="ContentDescription" />
 
     <ImageView
@@ -87,10 +90,10 @@
         android:layout_height="@dimen/dp_20"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
+        android:contentDescription="TODO"
         android:src="@drawable/delete"
         android:tint="@color/blue"
-        android:visibility="gone"
-        android:contentDescription="TODO" />
+        android:visibility="gone" />
 
     <View
         android:id="@+id/view"
@@ -102,9 +105,9 @@
 
     <TextView
         android:id="@+id/dummy_text"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/food_item_amount_text_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/food_item_amount_text_view"
+        android:layout_centerInParent="true" />
 
 </RelativeLayout>

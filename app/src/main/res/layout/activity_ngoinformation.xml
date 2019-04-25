@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scroll_view_layout"
+    android:background="@color/white"
+    tools:context=".activities.NGOInformation">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".NGOinformation">
+
+        <TextView
+            android:id="@+id/NGODetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:text="@string/ngo_s_details"
+            android:textAlignment="center"
+            android:textColor="#2A7C1B"
+            android:textSize="@dimen/sp_30"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/Desription_ngo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:text="@string/Desc_ngo"
+            android:textColor="@android:color/background_dark"
+            android:textSize="@dimen/sp_18" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ngo_one"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_20"
+                android:src="@drawable/rotingo2" />
+
+            <TextView
+                android:id="@+id/ngo_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_120"
+                android:layout_marginTop="@dimen/dp_30"
+                android:text="@string/NGOone_name"
+                android:textColor="#3DA6DA"
+                android:textSize="@dimen/dp_20"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/NGO_contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_120"
+                android:layout_marginTop="@dimen/dp_60"
+                android:layout_marginRight="10dp"
+                android:text="@string/NGO_one_contact"
+                android:textColor="#960A3D"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ngo_two"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_20"
+                android:src="@drawable/rotingo4" />
+
+            <TextView
+                android:id="@+id/ngoTwo_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_120"
+                android:layout_marginTop="@dimen/dp_30"
+                android:text="@string/ngo_two_name"
+                android:textColor="#3DA6DA"
+                android:textSize="@dimen/dp_20"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/NGOtwo_contact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_120"
+                android:layout_marginTop="@dimen/dp_60"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_marginRight="10dp"
+                android:text="@string/ngo_two_contact"
+                android:textColor="#960A3D"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/NGOtwo_contactPlz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_120"
+            android:layout_marginTop="@dimen/dp_60"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_marginRight="10dp"
+            android:text="Please contact this NGO's"
+            android:textColor="#C0781C"
+            android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/NGO_contact_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_40"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:background="@color/blue"
+            android:text="Click Here "
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+</ScrollView>

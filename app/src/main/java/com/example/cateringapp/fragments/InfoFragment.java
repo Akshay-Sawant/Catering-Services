@@ -33,7 +33,7 @@ public class InfoFragment extends Fragment {
         // Inflate the layout for this fragment
         infoFragmentView = inflater.inflate(R.layout.fragment_info, container, false);
 
-        Objects.requireNonNull(getActivity()).setTitle(R.string.information);
+        Objects.requireNonNull(getActivity()).setTitle(R.string.about);
 
         galleryHashMap = new HashMap<>();
         gallerySlider = infoFragmentView.findViewById(R.id.gallery_slider);

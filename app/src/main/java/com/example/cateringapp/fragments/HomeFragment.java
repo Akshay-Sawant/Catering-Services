@@ -4,15 +4,18 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.example.cateringapp.R;
+import com.example.cateringapp.activities.HomeScreenActivity;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -20,11 +23,13 @@ import java.util.Objects;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment implements ViewPager.OnPageChangeListener {
+public class HomeFragment extends Fragment implements ViewPager.OnPageChangeListener, View.OnClickListener {
 
     SliderLayout sliderLayout;
     HashMap<String, Integer> hashMap;
     TextSliderView textSliderView;
+    CardView eventsCardView, tiffinsCardView;
+    HomeScreenActivity homeScreenActivity;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -34,6 +39,14 @@ public class HomeFragment extends Fragment implements ViewPager.OnPageChangeList
         Objects.requireNonNull(getActivity()).setTitle(R.string.home);
 
         sliderLayout = view.findViewById(R.id.slider);
+        eventsCardView = view.findViewById(R.id.events_menu_card_view);
+        tiffinsCardView = view.findViewById(R.id.tiffin_menu_card_view);
+
+        eventsCardView.setOnClickListener(this);
+        tiffinsCardView.setOnClickListener(this);
+
+//        homeScreenActivity = new HomeScreenActivity();
+
         setSliderLayoutFunc();
 
         return view;
@@ -89,5 +102,17 @@ public class HomeFragment extends Fragment implements ViewPager.OnPageChangeList
     @Override
     public void onPageScrollStateChanged(int i) {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.events_menu_card_view:
+                Toast.makeText(getActivity(), "Go to Menu and Enter Order Details First", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.tiffin_menu_card_view:
+                Toast.makeText(getActivity(), "Go to Menu and Enter Order Details First", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }

@@ -4,6 +4,8 @@ package com.example.cateringapp.fragments;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +18,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.cateringapp.R;
+import com.example.cateringapp.adapters.AddToCartAdapter;
+import com.example.cateringapp.adapters.DefaultFoodItemAdapter;
 import com.example.cateringapp.adapters.ReportsAdapter;
 import com.example.cateringapp.database.DatabaseHelper;
 import com.example.cateringapp.models.Reports;
@@ -27,18 +31,20 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ReportsFragment extends Fragment implements View.OnClickListener {
+public class ReportsFragment extends Fragment /*implements View.OnClickListener*/ {
 
     private static final String STATE_DATE = "retain_date"; // save date on screen rotation
 
-    private DatabaseHelper databaseHelper;
+    /*private DatabaseHelper databaseHelper;
     Reports reports;
     private ReportsAdapter reportsAdapter;
     private Date mDate;
     private EditText editText;
     private ListView listView;
     private TextView txtDate;
-    private Button prevDateBtn, nextDateBtn;
+    private Button prevDateBtn, nextDateBtn;*/
+
+    RecyclerView recyclerView;
 
     public ReportsFragment() {
         // Required empty public constructor
@@ -52,47 +58,53 @@ public class ReportsFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_reports, container, false);
 
         // Retain Instance State
-        if (savedInstanceState != null) {
+        /*if (savedInstanceState != null) {
             mDate = (Date) savedInstanceState.getSerializable(STATE_DATE);
         } else {
             mDate = new Date();
         }
 
         // Widgets
-        listView = view.findViewById(R.id.listView);
+//        listView = view.findViewById(R.id.listView);
         txtDate = view.findViewById(R.id.mDate);
 
         prevDateBtn = view.findViewById(R.id.prevD);
-        nextDateBtn = view.findViewById(R.id.nexD);
+        nextDateBtn = view.findViewById(R.id.nexD);*/
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        recyclerView = view.findViewById(R.id.reports_recycler);
+        AddToCartAdapter defaultFoodItemAdapter = new AddToCartAdapter(getActivity(), null);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(defaultFoodItemAdapter);
+
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                /*Reports reports = reportsAdapter.getItem(position);
-                Snackbar.make(view, reports.get_name(), Snackbar.LENGTH_SHORT).show();*/
+                *//*Reports reports = reportsAdapter.getItem(position);
+                Snackbar.make(view, reports.get_name(), Snackbar.LENGTH_SHORT).show();*//*
             }
         });
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                /*Snackbar.make(view, reports.get_name(), Snackbar.LENGTH_SHORT).show();
+                *//*Snackbar.make(view, reports.get_name(), Snackbar.LENGTH_SHORT).show();
                 databaseHelper.deleteReport(reports);
                 reportsAdapter.remove(reports);
-                reportsAdapter.notifyDataSetChanged();*/
+                reportsAdapter.notifyDataSetChanged();*//*
 
                 return false;
             }
-        });
+        });*/
 
-        prevDateBtn.setOnClickListener(this);
-        nextDateBtn.setOnClickListener(this);
+        /*prevDateBtn.setOnClickListener(this);
+        nextDateBtn.setOnClickListener(this);*/
 
         // Set the adapter based on date
 //        setAdapterFunc(mDate);
 
         return view;
     }
-
+/*
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -132,5 +144,5 @@ public class ReportsFragment extends Fragment implements View.OnClickListener {
     public void onSaveInstanceState(@NonNull Bundle state) {
         super.onSaveInstanceState(state);
         state.putSerializable(STATE_DATE, mDate);
-    }
+    }*/
 }

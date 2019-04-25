@@ -38,6 +38,7 @@ import com.example.cateringapp.R;
 import com.example.cateringapp.fragments.AboutUsFragment;
 import com.example.cateringapp.fragments.DatePickerFragment;
 import com.example.cateringapp.fragments.HomeFragment;
+import com.example.cateringapp.fragments.InfoFragment;
 import com.example.cateringapp.fragments.MenuFragment;
 import com.example.cateringapp.fragments.SettingsFragment;
 import com.example.cateringapp.fragments.TimePickerFragment;
@@ -157,7 +158,7 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
                 chooserDialogFunc();
                 break;
             case R.id.about_us:
-                loadHomeScreenActivityFragmentsFunc(new AboutUsFragment());
+                loadHomeScreenActivityFragmentsFunc(new InfoFragment());
                 break;
             case R.id.settings:
                 loadHomeScreenActivityFragmentsFunc(new SettingsFragment());

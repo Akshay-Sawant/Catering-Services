@@ -79,7 +79,7 @@ public class EventsFragment extends Fragment {
         mFoodImages.add(R.drawable.juice_dishes);
         mFoodTypeNames.add(getString(R.string.juice));
 
-        mFoodImages.add(R.drawable.street_food);
+        /*mFoodImages.add(R.drawable.street_food);
         mFoodTypeNames.add(getString(R.string.street_food));
 
         mFoodImages.add(R.drawable.healthy_food);
@@ -146,7 +146,7 @@ public class EventsFragment extends Fragment {
         mFoodTypeNames.add(getString(R.string.greek));
 
         mFoodImages.add(R.drawable.mediterranian);
-        mFoodTypeNames.add(getString(R.string.mediterranean));
+        mFoodTypeNames.add(getString(R.string.mediterranean));*/
     }
 
     public void initializeRecyclerViewFunc() {
