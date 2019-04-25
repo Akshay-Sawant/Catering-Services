@@ -21,18 +21,6 @@
             android:name=".activities.MyFoodCartActivity"
             android:label="@string/food_cart"
             android:theme="@style/AppTheme.ActionBar" />
-        <activity
-            android:name=".activities.DinnerActivity"
-            android:label="@string/dinner"
-            android:theme="@style/AppTheme.ActionBar" />
-        <activity
-            android:name=".activities.LunchActivity"
-            android:label="@string/lunch"
-            android:theme="@style/AppTheme.ActionBar" />
-        <activity
-            android:name=".activities.BreakFastActivity"
-            android:label="@string/breakfast"
-            android:theme="@style/AppTheme.ActionBar" />
         <activity android:name=".activities.WelcomeActivity" />
         <activity android:name=".activities.AdminActivity" />
         <activity android:name=".activities.RegistrationActivity" />

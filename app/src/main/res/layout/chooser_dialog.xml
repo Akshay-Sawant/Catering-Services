@@ -11,6 +11,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
         android:background="@drawable/gradient_spinner" />
 
     <android.support.v7.widget.CardView
@@ -18,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/delivery_service_type_spinner"
         android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginTop="@dimen/dp_10"
         android:layout_marginEnd="@dimen/dp_10">
 
         <RelativeLayout
@@ -35,7 +38,8 @@
                 android:text="@string/service_type"
                 android:textAllCaps="true"
                 android:textColor="@color/blue"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone" />
 
             <CheckBox
                 android:id="@+id/break_fast_service"
@@ -44,7 +48,8 @@
                 android:layout_below="@id/tiffin_service_type"
                 android:layout_marginTop="@dimen/dp_10"
                 android:text="@string/breakfast"
-                android:textColor="@color/blue" />
+                android:textColor="@color/blue"
+                android:visibility="gone" />
 
             <CheckBox
                 android:id="@+id/lunch_service"
@@ -55,7 +60,8 @@
                 android:layout_marginTop="@dimen/dp_10"
                 android:layout_toEndOf="@+id/break_fast_service"
                 android:text="@string/lunch"
-                android:textColor="@color/blue" />
+                android:textColor="@color/blue"
+                android:visibility="gone" />
 
             <CheckBox
                 android:id="@+id/dinner_service"
@@ -66,7 +72,8 @@
                 android:layout_marginTop="@dimen/dp_10"
                 android:layout_toEndOf="@+id/lunch_service"
                 android:text="@string/dinner"
-                android:textColor="@color/blue" />
+                android:textColor="@color/blue"
+                android:visibility="gone" />
 
             <EditText
                 android:id="@+id/event_name_edit_text"
@@ -79,18 +86,51 @@
                 android:inputType="textCapWords|textAutoCorrect|textAutoComplete"
                 android:padding="@dimen/dp_10"
                 android:textColor="@color/blue"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/no_of_guests_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/event_name_edit_text"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="@drawable/button_background"
+                android:hint="@string/no_of_guests"
+                android:inputType="number"
+                android:padding="@dimen/dp_10"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/no_of_people_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/no_of_guests_edit_text"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="@drawable/button_background"
+                android:hint="@string/no_of_people"
+                android:inputType="number"
+                android:padding="@dimen/dp_10"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone"
                 tools:ignore="Autofill" />
 
             <TextView
                 android:id="@+id/schedule_tiffin_service"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/event_name_edit_text"
+                android:layout_below="@+id/no_of_people_edit_text"
                 android:layout_marginTop="@dimen/dp_10"
                 android:text="@string/schedule_service"
                 android:textAllCaps="true"
                 android:textColor="@color/blue"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone" />
 
             <CheckBox
                 android:id="@+id/asap_tiffin_service"
@@ -99,7 +139,8 @@
                 android:layout_below="@+id/schedule_tiffin_service"
                 android:layout_marginTop="@dimen/dp_5"
                 android:text="@string/asap_as_soon_as_possible"
-                android:textColor="@color/blue" />
+                android:textColor="@color/blue"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/schedule_an_order_text_view"
@@ -144,6 +185,7 @@
                 android:textSize="@dimen/sp_16" />
 
             <View
+                android:id="@+id/view_vertical_margin"
                 android:layout_width="1dp"
                 android:layout_height="@dimen/dp_25"
                 android:layout_below="@+id/schedule_an_order_text_view"
@@ -156,12 +198,12 @@
                 android:layout_width="@dimen/dp_20"
                 android:layout_height="@dimen/dp_20"
                 android:layout_below="@+id/schedule_an_order_text_view"
+                android:layout_marginStart="@dimen/dp_10"
                 android:layout_marginTop="@dimen/dp_20"
                 android:layout_marginEnd="@dimen/dp_10"
-                android:layout_toStartOf="@+id/schedule_order_time"
+                android:layout_toEndOf="@+id/view_vertical_margin"
                 android:src="@drawable/ic_time"
                 android:tint="@color/blue"
-                android:layout_marginStart="@dimen/dp_10"
                 tools:ignore="ContentDescription" />
 
             <TextView
@@ -169,15 +211,54 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/schedule_an_order_text_view"
-                android:layout_alignParentEnd="true"
                 android:layout_marginTop="@dimen/dp_20"
                 android:layout_marginEnd="@dimen/dp_20"
+                android:layout_toEndOf="@+id/schedule_time_icon"
                 android:text="@string/schedule_a_time"
                 android:textColor="@color/blue"
                 android:textSize="@dimen/sp_16" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/schedule_order_time"
+                android:layout_marginTop="@dimen/dp_20"
+                android:text="@string/see_your_location"
+                android:textAllCaps="true"
+                android:textColor="@color/blue"
+                android:textStyle="bold" />
+
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <Button
+            android:id="@+id/cancel_chooser_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="@color/blue"
+            android:text="@string/cancel"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/ok_chooser_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="@color/blue"
+            android:text="@string/ok"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
 </RelativeLayout>

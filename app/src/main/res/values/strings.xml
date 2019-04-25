@@ -135,12 +135,11 @@
     <string name="already_a_member_login">Already a member? Login</string>
     <string name="zero">0</string>
     <string name="card_holder_name">Card Holder Name</string>
-    <string name="card_number">Card Number</string>
     <string name="contact_number">Contact Number</string>
     <string name="address">Address</string>
     <string name="make_payment">Make Payment</string>
-    <string name="food_type_name">Food Service Name :</string>
-    <string name="food_service_type">Food Service Type</string>
+    <string name="food_type_name">Service Name :</string>
+    <string name="food_service_type">Service Type</string>
     <string name="users_profile">User Profile</string>
     <string name="settings">Settings</string>
     <string name="user_details">User Details</string>
@@ -158,11 +157,10 @@
     <string name="help">Help</string>
     <string name="legal">Legal</string>
     <string name="information">Information</string>
-    <string name="payment">Payment</string>
     <string name="edit_account">Edit Account</string>
     <string name="saved_places">Saved Places</string>
     <string name="work">Work</string>
-    <string name="delivery_details">Delivery Details</string>
+    <string name="delivery_details">Delivery &amp; Payment Details</string>
     <string name="delivery_address">Delivery Address</string>
     <string name="when">When</string>
     <string name="other_options">Other Options</string>
@@ -174,10 +172,33 @@
     <string name="asap_as_soon_as_possible">Asap (As Soon As Possible)</string>
     <string name="schedule_service">Schedule Service</string>
     <string name="schedule_an_order">Schedule an order</string>
-    <string name="schedule_a_date">Schedule a date</string>
+    <string name="schedule_a_date">Date</string>
+    <string name="schedule_a_time">Time</string>
 
     <string-array name="delivery_address_type">
         <item>Home</item>
         <item>Work</item>
     </string-array>
+
+    <string-array name="services">
+        <item>Tiffin</item>
+        <item>Events</item>
+    </string-array>
+
+    <string name="date_picker">datePicker</string>
+    <string name="time_picker">timePicker</string>
+    <string name="date">"Date: "</string>
+    <string name="time">"Time: "</string>
+    <string name="manage_your_payments">Manage your payments</string>
+    <string name="payments">Payments</string>
+    <string name="no_of_dishes">No of Dishes</string>
+    <string name="card_number">Card Number</string>
+    <string name="card_expiry_date">Card Expiry Date</string>
+    <string name="card_cvv">Card CVV</string>
+    <string name="edit">Edit</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
+    <string name="see_your_location">See Your Location</string>
+    <string name="no_of_guests">No of Guests</string>
+    <string name="no_of_people">No of People</string>
 </resources>

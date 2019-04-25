@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -17,36 +18,61 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.cateringapp.R;
 import com.example.cateringapp.fragments.AboutUsFragment;
+import com.example.cateringapp.fragments.DatePickerFragment;
 import com.example.cateringapp.fragments.HomeFragment;
 import com.example.cateringapp.fragments.MenuFragment;
 import com.example.cateringapp.fragments.SettingsFragment;
+import com.example.cateringapp.fragments.TimePickerFragment;
 import com.example.cateringapp.utils.PrefManager;
 import com.github.clans.fab.FloatingActionButton;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Stack;
 
-public class HomeScreenActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+public class HomeScreenActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, AdapterView.OnItemSelectedListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
     FloatingActionButton emailFloatingActionButton, fbFloatingActionButton, whatsappFloatingActionButton, contactUsFloatingActionButton, locateUsFloatingActionButton;
-    TextView usernameText;
+    TextView usernameText, serviceTypeTextView, scheduleServiceTextView, scheduleOrderTextView, scheduledDateTextView, scheduledTimeTextView;
+
     private Intent sendIntent;
     private Stack<Fragment> fragmentStack;
     private FragmentManager fragmentManager;
     private AlertDialog.Builder builder;
     private PrefManager prefManager;
     private Context homeScreenActivityContext;
+    private EditText eventNameDeliveryWhenEditText, noOfGuestsEditText, noOfPeopleEditText;
+    private DatePicker datePickerDeliveryWhen;
+    private Calendar calendarDeliveryWhen;
+    private ImageView scheduleDateImageView, scheduleTimeImageView;
+    private Button okChooserBtn, cancelChooserBtn;
+    private Spinner deliveryServiceTypeSpinner;
+    private int year, month, day;
+    private ArrayAdapter<CharSequence> charSequenceArrayAdapter;
+    private String spinnerLabel = "";
+
+    CheckBox breakFastCheckBox, lunchCheckBox, dinnerCheckBox, asapCheckBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,7 +154,7 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
                 loadHomeScreenActivityFragmentsFunc(new HomeFragment());
                 break;
             case R.id.menu:
-                loadHomeScreenActivityFragmentsFunc(new MenuFragment());
+                chooserDialogFunc();
                 break;
             case R.id.about_us:
                 loadHomeScreenActivityFragmentsFunc(new AboutUsFragment());
@@ -149,6 +175,125 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
         getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
     }
 
+    public void chooserDialogFunc() {
+
+        final AlertDialog.Builder alert = new AlertDialog.Builder(HomeScreenActivity.this);
+        View view = getLayoutInflater().inflate(R.layout.chooser_dialog, null);
+
+        okChooserBtn = view.findViewById(R.id.ok_chooser_btn);
+        cancelChooserBtn = view.findViewById(R.id.cancel_chooser_btn);
+        deliveryServiceTypeSpinner = view.findViewById(R.id.delivery_service_type_spinner);
+        //Binding SERVICE TYPE text view
+        serviceTypeTextView = view.findViewById(R.id.tiffin_service_type);
+
+        //Binding SERVICE TYPE check box
+        breakFastCheckBox = view.findViewById(R.id.break_fast_service);
+        lunchCheckBox = view.findViewById(R.id.lunch_service);
+        dinnerCheckBox = view.findViewById(R.id.dinner_service);
+
+        //Binding EVENT NAME edit text
+        eventNameDeliveryWhenEditText = view.findViewById(R.id.event_name_edit_text);
+        noOfGuestsEditText = view.findViewById(R.id.no_of_guests_edit_text);
+        noOfPeopleEditText = view.findViewById(R.id.no_of_people_edit_text);
+
+        //Binding SCHEDULE SERVICE text view
+        scheduleServiceTextView = view.findViewById(R.id.schedule_tiffin_service);
+
+        //Binding SCHEDULE SERVICE checkbox
+        asapCheckBox = view.findViewById(R.id.asap_tiffin_service);
+
+        //Binding SCHEDULE AN ORDER  DATE & TIME text view
+        scheduleOrderTextView = view.findViewById(R.id.schedule_an_order_text_view);
+        scheduledDateTextView = view.findViewById(R.id.schedule_order_date);
+        scheduledTimeTextView = view.findViewById(R.id.schedule_order_time);
+
+        //Binding SCHEDULE DATE & TIME image view
+        scheduleDateImageView = view.findViewById(R.id.schedule_date_icon);
+        scheduleTimeImageView = view.findViewById(R.id.schedule_time_icon);
+
+        scheduledDateTextView.setOnClickListener(this);
+        scheduledTimeTextView.setOnClickListener(this);
+        scheduleDateImageView.setOnClickListener(this);
+        scheduleTimeImageView.setOnClickListener(this);
+
+        alert.setView(view);
+
+        final AlertDialog alertDialog = alert.create();
+        alertDialog.setCancelable(false);
+
+        if (deliveryServiceTypeSpinner != null) {
+            deliveryServiceTypeSpinner.setOnItemSelectedListener(this);
+        }
+
+        charSequenceArrayAdapter = ArrayAdapter.createFromResource(HomeScreenActivity.this, R.array.services,
+                android.R.layout.simple_spinner_dropdown_item);
+        charSequenceArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        if (deliveryServiceTypeSpinner != null) {
+            deliveryServiceTypeSpinner.setAdapter(charSequenceArrayAdapter);
+        }
+
+        okChooserBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (spinnerLabel.equals("Tiffin")) {
+                    if (!breakFastCheckBox.isChecked() || !lunchCheckBox.isChecked() || !dinnerCheckBox.isChecked()
+                            && noOfPeopleEditText.getText().equals("") && scheduledDateTextView.getText().equals("") && scheduledTimeTextView.getText().equals("")) {
+                        Toast.makeText(homeScreenActivityContext, "Above mentioned fields cannot be empty", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (breakFastCheckBox.isChecked()) {
+                            PrefManager.setTiffinServiceType(homeScreenActivityContext, "BreakFast");
+                        }
+                        if (lunchCheckBox.isChecked()) {
+                            PrefManager.setTiffinServiceType(homeScreenActivityContext, "Lunch");
+                        }
+                        if (dinnerCheckBox.isChecked()) {
+                            PrefManager.setTiffinServiceType(homeScreenActivityContext, "Dinner");
+                        }
+                        if (asapCheckBox.isChecked()) {
+                            PrefManager.setScheduleService(homeScreenActivityContext, "ASAP");
+                        }
+                        PrefManager.setNoOfPeople(homeScreenActivityContext, noOfPeopleEditText.getText().toString().trim());
+                        PrefManager.setOrderDate(homeScreenActivityContext, scheduledDateTextView.getText().toString());
+                        PrefManager.setOrderTime(homeScreenActivityContext, scheduledTimeTextView.getText().toString());
+
+                        loadHomeScreenActivityFragmentsFunc(new MenuFragment());
+                        alertDialog.dismiss();
+                    }
+                }
+                if (spinnerLabel.equals("Events")) {
+                    if (!(noOfGuestsEditText.getText().equals("") && eventNameDeliveryWhenEditText.getText().equals("")
+                            && scheduledDateTextView.getText().equals("") && scheduledTimeTextView.getText().equals(""))) {
+                        PrefManager.setEventName(homeScreenActivityContext, eventNameDeliveryWhenEditText.getText().toString().trim());
+                        PrefManager.setNoOfGuests(homeScreenActivityContext, noOfGuestsEditText.getText().toString().trim());
+
+                        PrefManager.setOrderDate(homeScreenActivityContext, scheduledDateTextView.getText().toString());
+                        PrefManager.setOrderTime(homeScreenActivityContext, scheduledTimeTextView.getText().toString());
+
+                        loadHomeScreenActivityFragmentsFunc(new MenuFragment());
+                        alertDialog.dismiss();
+                    } else {
+                        Toast.makeText(homeScreenActivityContext, "Above mentioned fields cannot be empty", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        });
+
+        cancelChooserBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog.show();
+    }
+
+    public void chooserButtonFunc() {
+
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -167,7 +312,51 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
             case R.id.locate_us_fab:
                 locationFunc();
                 break;
+            case R.id.schedule_date_icon:
+                showDatePickerDialog();
+                break;
+            case R.id.schedule_order_date:
+                showDatePickerDialog();
+                break;
+            case R.id.schedule_time_icon:
+                showTimePickerDialog();
+                break;
+            case R.id.schedule_order_time:
+                showTimePickerDialog();
+                break;
         }
+    }
+
+    public void showDatePickerDialog() {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getSupportFragmentManager(), getString(R.string.date_picker));
+    }
+
+    public void showTimePickerDialog() {
+        DialogFragment newFragment = new TimePickerFragment();
+        newFragment.show(getSupportFragmentManager(), getString(R.string.time_picker));
+    }
+
+    public void processDatePickerResult(int year, int month, int day) {
+        // The month integer returned by the date picker starts counting at 0
+        // for January, so you need to add 1 to show months starting at 1.
+        String month_string = Integer.toString(month + 1);
+        String day_string = Integer.toString(day);
+        String year_string = Integer.toString(year);
+        // Assign the concatenated strings to dateMessage.
+        String dateMessage = (month_string + "/" + day_string + "/" + year_string);
+//        Toast.makeText(this, getString(R.string.date) + dateMessage, Toast.LENGTH_SHORT).show();
+        scheduledDateTextView.setText(dateMessage);
+    }
+
+    public void processTimePickerResult(int hourOfDay, int minute) {
+        // Convert time elements into strings.
+        String hour_string = Integer.toString(hourOfDay);
+        String minute_string = Integer.toString(minute);
+        // Assign the concatenated strings to timeMessage.
+        String timeMessage = (hour_string + ":" + minute_string);
+//        Toast.makeText(this, getString(R.string.time) + timeMessage, Toast.LENGTH_SHORT).show();
+        scheduledTimeTextView.setText(timeMessage);
     }
 
     @SuppressLint("IntentReset")
@@ -266,5 +455,42 @@ public class HomeScreenActivity extends AppCompatActivity implements NavigationV
             }
         });
         builder.show();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        spinnerLabel = parent.getItemAtPosition(position).toString();
+        if (spinnerLabel.equals("Tiffin")) {
+            PrefManager.setServiceType(HomeScreenActivity.this, spinnerLabel);
+            serviceTypeTextView.setVisibility(View.VISIBLE);
+            breakFastCheckBox.setVisibility(View.VISIBLE);
+            lunchCheckBox.setVisibility(View.VISIBLE);
+            dinnerCheckBox.setVisibility(View.VISIBLE);
+            scheduleServiceTextView.setVisibility(View.VISIBLE);
+            asapCheckBox.setVisibility(View.VISIBLE);
+            noOfPeopleEditText.setVisibility(View.VISIBLE);
+
+            eventNameDeliveryWhenEditText.setVisibility(View.GONE);
+            noOfGuestsEditText.setVisibility(View.GONE);
+//            getActivity().getSupportFragmentManager().popBackStack();
+        } else {
+            PrefManager.setServiceType(HomeScreenActivity.this, spinnerLabel);
+            serviceTypeTextView.setVisibility(View.GONE);
+            breakFastCheckBox.setVisibility(View.GONE);
+            lunchCheckBox.setVisibility(View.GONE);
+            dinnerCheckBox.setVisibility(View.GONE);
+            scheduleServiceTextView.setVisibility(View.GONE);
+            asapCheckBox.setVisibility(View.GONE);
+            noOfPeopleEditText.setVisibility(View.GONE);
+
+            eventNameDeliveryWhenEditText.setVisibility(View.VISIBLE);
+            noOfGuestsEditText.setVisibility(View.VISIBLE);
+//            getActivity().getSupportFragmentManager().popBackStack();
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

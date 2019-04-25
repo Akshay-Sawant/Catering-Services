@@ -25,7 +25,7 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
 
     View viewSettingsFragment;
     private TextView fullNameSettingsTextView, userNameSettingsTextView, homeSettingsTextView, workSettingsTextView, deliverySettingsTextView, deliverySettingsTitle,
-            whenSettingsTextView, whenSettingsTitle, logoutSettingsTitle;
+            managePaymentSettingsTextView, paymentSettingsTitle, logoutSettingsTitle;
 
     private AlertDialog.Builder builderSettings;
     private PrefManager prefManagerSettings;
@@ -56,16 +56,16 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
         deliverySettingsTitle = viewSettingsFragment.findViewById(R.id.delivery_address_title);
         deliverySettingsTextView = viewSettingsFragment.findViewById(R.id.delivery_address_text_view);
 
-        whenSettingsTitle = viewSettingsFragment.findViewById(R.id.delivery_when_title);
-        whenSettingsTextView = viewSettingsFragment.findViewById(R.id.delivery_when_text_view);
+        paymentSettingsTitle = viewSettingsFragment.findViewById(R.id.payments_title);
+        managePaymentSettingsTextView = viewSettingsFragment.findViewById(R.id.manage_payments_text_view);
 
         logoutSettingsTitle = viewSettingsFragment.findViewById(R.id.other_options_sign_out_text_view);
 
         deliverySettingsTitle.setOnClickListener(this);
         deliverySettingsTextView.setOnClickListener(this);
 
-        whenSettingsTitle.setOnClickListener(this);
-        whenSettingsTextView.setOnClickListener(this);
+        paymentSettingsTitle.setOnClickListener(this);
+        managePaymentSettingsTextView.setOnClickListener(this);
 
         logoutSettingsTitle.setOnClickListener(this);
 
@@ -90,11 +90,11 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
             case R.id.delivery_address_text_view:
                 loadAboutUsFragmentFunc(new DeliveryAddressFragment());
                 break;
-            case R.id.delivery_when_title:
-                loadAboutUsFragmentFunc(new DeliveryWhenFragment());
+            case R.id.payments_title:
+                loadAboutUsFragmentFunc(new PaymentFragment());
                 break;
-            case R.id.delivery_when_text_view:
-                loadAboutUsFragmentFunc(new DeliveryWhenFragment());
+            case R.id.manage_payments_text_view:
+                loadAboutUsFragmentFunc(new PaymentFragment());
                 break;
             case R.id.other_options_sign_out_text_view:
                 logoutSettingsFragmentFunc();

@@ -48,5 +48,8 @@ dependencies {
     implementation "android.arch.navigation:navigation-fragment:1.0.0"
 
     // use -ktx for Kotlin
-    implementation "android.arch.navigation:navigation-ui:1.0.0" // use -ktx for Kotlin
+    implementation "android.arch.navigation:navigation-ui:1.0.0"
+//    implementation project(path: ':libraries:library') // use -ktx for Kotlin
+
+    implementation 'com.google.code.gson:gson:2.8.5'
 }

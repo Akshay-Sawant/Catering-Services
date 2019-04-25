@@ -55,7 +55,7 @@ public class BreakFastAdapter extends RecyclerView.Adapter<BreakFastAdapter.Brea
 
             breakfastFoodNameText = itemView.findViewById(R.id.food_name_text_view);
             breakfastFoodAmountText = itemView.findViewById(R.id.food_item_amount_text_view);
-            breakfastFoodItemAddBtn = itemView.findViewById(R.id.add_food_to_cart_btn);
+//            breakfastFoodItemAddBtn = itemView.findViewById(R.id.add_food_to_cart_btn);
         }
     }
 }

@@ -36,7 +36,7 @@ public class DeliveryAddressFragment extends Fragment implements AdapterView.OnI
         // Inflate the layout for this fragment
         viewDeliveryAddressFragment = inflater.inflate(R.layout.fragment_delivery_address, container, false);
 
-        getActivity().setTitle("Work Address");
+        getActivity().setTitle("Delivery Address");
 
         bindingDeliveryAddressFragmentsViewsFunc();
 

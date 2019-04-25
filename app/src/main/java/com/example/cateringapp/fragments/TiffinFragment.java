@@ -1,32 +1,20 @@
 package com.example.cateringapp.fragments;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.cateringapp.R;
-import com.example.cateringapp.activities.BreakFastActivity;
-import com.example.cateringapp.activities.DinnerActivity;
-import com.example.cateringapp.activities.LunchActivity;
-import com.example.cateringapp.activities.RegistrationActivity;
-import com.example.cateringapp.adapters.DefaultFoodItemAdapter;
 import com.example.cateringapp.adapters.StaggeredRecyclerViewAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 /**

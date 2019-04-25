@@ -225,40 +225,40 @@
                     android:textColor="@color/blue" />
 
                 <ImageView
-                    android:id="@+id/delivery_when_icon"
+                    android:id="@+id/payments_icon"
                     android:layout_width="@dimen/dp_20"
                     android:layout_height="@dimen/dp_20"
                     android:layout_below="@+id/delivery_address_text_view"
                     android:layout_alignParentStart="true"
                     android:layout_marginStart="@dimen/dp_10"
                     android:layout_marginTop="@dimen/dp_30"
-                    android:src="@drawable/ic_when"
+                    android:src="@drawable/ic_payment"
                     android:tint="@color/blue"
                     tools:ignore="ContentDescription" />
 
                 <TextView
-                    android:id="@+id/delivery_when_title"
+                    android:id="@+id/payments_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/delivery_address_text_view"
                     android:layout_marginStart="@dimen/dp_10"
                     android:layout_marginTop="@dimen/dp_20"
                     android:layout_marginEnd="@dimen/dp_10"
-                    android:layout_toEndOf="@+id/delivery_when_icon"
-                    android:text="@string/when"
+                    android:layout_toEndOf="@+id/payments_icon"
+                    android:text="@string/payments"
                     android:textColor="@color/blue"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/delivery_when_text_view"
+                    android:id="@+id/manage_payments_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/delivery_when_title"
+                    android:layout_below="@+id/payments_title"
                     android:layout_marginStart="@dimen/dp_10"
                     android:layout_marginEnd="@dimen/dp_10"
                     android:layout_marginBottom="@dimen/dp_10"
-                    android:layout_toEndOf="@+id/delivery_when_icon"
-                    android:text="@string/when"
+                    android:layout_toEndOf="@+id/payments_icon"
+                    android:text="@string/manage_your_payments"
                     android:textColor="@color/blue" />
 
             </RelativeLayout>

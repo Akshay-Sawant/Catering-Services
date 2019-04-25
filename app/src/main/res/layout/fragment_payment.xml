@@ -1,14 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/payment_root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.PaymentFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10">
 
-</FrameLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_20">
+
+            <TextView
+                android:id="@+id/edit_card_details_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:text="@string/edit"
+                android:textColor="@color/blue" />
+
+            <TextView
+                android:id="@+id/card_holder_name_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:text="@string/card_holder_name"
+                android:textAllCaps="true"
+                android:textColor="@color/blue"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/card_holder_name_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_holder_name_title"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_toStartOf="@+id/edit_card_details_text"
+                android:hint="@string/card_holder_name"
+                android:inputType="textCapWords"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/card_holder_name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_holder_name_edit_text"
+                android:layout_alignParentStart="true"
+                android:hint="@string/card_holder_name"
+                android:textColor="@color/blue" />
+
+            <TextView
+                android:id="@+id/card_number_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_holder_name_text"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="@string/card_number"
+                android:textAllCaps="true"
+                android:textColor="@color/blue"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/card_number_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_number_title"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_toStartOf="@+id/edit_card_details_text"
+                android:hint="@string/card_number"
+                android:inputType="numberPassword"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/card_number_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_number_edit_text"
+                android:layout_alignParentStart="true"
+                android:hint="@string/card_number"
+                android:textColor="@color/blue" />
+
+            <TextView
+                android:id="@+id/card_expiry_date_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_number_text"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="@string/card_expiry_date"
+                android:textAllCaps="true"
+                android:textColor="@color/blue"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/card_expiry_date_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_expiry_date_title"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_toStartOf="@+id/edit_card_details_text"
+                android:hint="@string/card_expiry_date"
+                android:inputType="date"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/card_expiry_date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_expiry_date_edit_text"
+                android:layout_alignParentStart="true"
+                android:hint="@string/card_expiry_date"
+                android:inputType="numberPassword"
+                android:textColor="@color/blue"
+                tools:ignore="TextViewEdits" />
+
+            <TextView
+                android:id="@+id/card_cvv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_expiry_date_text"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="@string/card_cvv"
+                android:textAllCaps="true"
+                android:textColor="@color/blue"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/card_cvv_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_cvv_title"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_toStartOf="@+id/edit_card_details_text"
+                android:hint="@string/card_cvv"
+                android:inputType="numberPassword"
+                android:maxLength="3"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone"
+                tools:ignore="Autofill" />
+
+            <TextView
+                android:id="@+id/card_cvv_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_cvv_edit_text"
+                android:layout_alignParentStart="true"
+                android:hint="@string/card_cvv"
+                android:inputType="numberPassword"
+                android:textColor="@color/blue"
+                tools:ignore="TextViewEdits" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <Button
+        android:id="@+id/save_card_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:text="@string/save"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+</RelativeLayout>
